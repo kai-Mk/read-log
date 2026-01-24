@@ -8,7 +8,7 @@
 /setup-project
 ```
 
-このコマンドを実行すると、`docs/ideas`内のアイデアをもとに6つの設計ドキュメントを順次作成します。
+このコマンドを実行すると、`docs/ideas`内のアイデアをもとに5つの設計ドキュメントを順次作成します。
 
 ---
 
@@ -55,12 +55,6 @@
 2. 既存のドキュメントを読む
 3. スキルのテンプレートとガイドに従って`docs/development-guidelines.md`を作成する
 
-### ステップ6: 用語集の作成
-
-1. **glossaryスキル**をロードする
-2. 既存のドキュメントを読む
-3. スキルのテンプレートとガイドに従って`docs/glossary.md`を作成する
-
 ---
 
 ## SKILLS（後で作成）
@@ -70,20 +64,18 @@
 - architecture-design
 - repository-structure
 - development-guidelines
-- glossary
 
 ---
 
 ## 完了条件
 
-以下の6つのドキュメントがすべて作成されていること:
+以下の5つのドキュメントがすべて作成されていること:
 
 - [ ] `docs/product-requirements.md` - プロダクト要件定義書
 - [ ] `docs/functional-design.md` - 機能設計書
 - [ ] `docs/architecture-design.md` - アーキテクチャ設計書
 - [ ] `docs/repository-structure.md` - リポジトリ構造定義書
 - [ ] `docs/development-guidelines.md` - 開発ガイドライン
-- [ ] `docs/glossary.md` - 用語集
 
 ## 完了メッセージ
 
@@ -96,6 +88,5 @@
 - docs/architecture-design.md
 - docs/repository-structure.md
 - docs/development-guidelines.md
-- docs/glossary.md
 
 これでプロジェクトの設計ドキュメントが揃いました。実装を開始する準備が整っています。
