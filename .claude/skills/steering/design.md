@@ -14,26 +14,26 @@
 
 ### Frontend
 
-| ファイルパス | 種類 | 責務 |
-| ------------ | ---- | ---- |
-| `packages/frontend/src/features/{feature}/components/{Component}.tsx` | コンポーネント | {責務} |
-| `packages/frontend/src/features/{feature}/hooks/use{Hook}.ts` | Hook | {責務} |
-| `packages/frontend/src/features/{feature}/services/{service}Service.ts` | Service | {責務} |
+| ファイルパス                                                            | 種類           | 責務   |
+| ----------------------------------------------------------------------- | -------------- | ------ |
+| `packages/frontend/src/features/{feature}/components/{Component}.tsx`   | コンポーネント | {責務} |
+| `packages/frontend/src/features/{feature}/hooks/use{Hook}.ts`           | Hook           | {責務} |
+| `packages/frontend/src/features/{feature}/services/{service}Service.ts` | Service        | {責務} |
 
 ### Backend
 
-| ファイルパス | 種類 | 責務 |
-| ------------ | ---- | ---- |
-| `packages/backend/src/routes/{route}.ts` | ルート | {責務} |
-| `packages/backend/src/controllers/{controller}Controller.ts` | コントローラー | {責務} |
-| `packages/backend/src/services/{service}Service.ts` | サービス | {責務} |
-| `packages/backend/src/repositories/{repository}Repository.ts` | リポジトリ | {責務} |
+| ファイルパス                                                  | 種類           | 責務   |
+| ------------------------------------------------------------- | -------------- | ------ |
+| `packages/backend/src/routes/{route}.ts`                      | ルート         | {責務} |
+| `packages/backend/src/controllers/{controller}Controller.ts`  | コントローラー | {責務} |
+| `packages/backend/src/services/{service}Service.ts`           | サービス       | {責務} |
+| `packages/backend/src/repositories/{repository}Repository.ts` | リポジトリ     | {責務} |
 
 ### Shared
 
-| ファイルパス | 種類 | 責務 |
-| ------------ | ---- | ---- |
-| `packages/shared/types/{type}.ts` | 型定義 | {責務} |
+| ファイルパス                          | 種類     | 責務   |
+| ------------------------------------- | -------- | ------ |
+| `packages/shared/types/{type}.ts`     | 型定義   | {責務} |
 | `packages/shared/schemas/{schema}.ts` | スキーマ | {責務} |
 
 ## 4. データフロー

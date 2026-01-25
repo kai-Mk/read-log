@@ -94,6 +94,7 @@ routes → controllers → services → repositories → Prisma
 ## ドキュメント
 
 設計ドキュメントは `docs/` に配置:
+
 - `product-requirements.md`: プロダクト要件定義
 - `functional-design.md`: 機能設計（データモデル、API仕様、画面仕様）
 - `architecture-design.md`: 技術スタック、環境構成

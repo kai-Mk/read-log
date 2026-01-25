@@ -12,13 +12,13 @@
 
 ## 技術スタック
 
-| カテゴリ | 技術 |
-|----------|------|
-| Frontend | React 18, Vite, TypeScript, Tailwind CSS, SWR |
-| Backend | Hono, Prisma, Node.js 22 |
-| Database | PostgreSQL 16 |
-| Testing | Vitest, React Testing Library, MSW |
-| Package Manager | pnpm (workspace) |
+| カテゴリ        | 技術                                          |
+| --------------- | --------------------------------------------- |
+| Frontend        | React 18, Vite, TypeScript, Tailwind CSS, SWR |
+| Backend         | Hono, Prisma, Node.js 22                      |
+| Database        | PostgreSQL 16                                 |
+| Testing         | Vitest, React Testing Library, MSW            |
+| Package Manager | pnpm (workspace)                              |
 
 ## セットアップ
 
@@ -88,13 +88,13 @@ packages/
 
 ## ドキュメント
 
-| ドキュメント | 説明 |
-|-------------|------|
-| [プロダクト要件定義書](./docs/product-requirements.md) | 機能要件、ユーザーストーリー |
-| [機能設計書](./docs/functional-design.md) | データモデル、API仕様、画面仕様 |
-| [アーキテクチャ設計書](./docs/architecture-design.md) | 技術スタック、環境構成 |
-| [リポジトリ構造定義書](./docs/repository-structure.md) | ディレクトリ構造、依存関係 |
-| [開発ガイドライン](./docs/development-guidelines.md) | コーディング規約、テスト方針 |
+| ドキュメント                                           | 説明                            |
+| ------------------------------------------------------ | ------------------------------- |
+| [プロダクト要件定義書](./docs/product-requirements.md) | 機能要件、ユーザーストーリー    |
+| [機能設計書](./docs/functional-design.md)              | データモデル、API仕様、画面仕様 |
+| [アーキテクチャ設計書](./docs/architecture-design.md)  | 技術スタック、環境構成          |
+| [リポジトリ構造定義書](./docs/repository-structure.md) | ディレクトリ構造、依存関係      |
+| [開発ガイドライン](./docs/development-guidelines.md)   | コーディング規約、テスト方針    |
 
 ## ライセンス
 

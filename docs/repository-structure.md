@@ -86,43 +86,43 @@
 
 ### Frontend
 
-| パス | 責務 | 含まれるファイル |
-| ---- | ---- | ---------------- |
-| `features/` | 機能ごとにまとまったモジュール | 各機能のcomponents, hooks, services |
-| `features/library/components/` | マイ書庫に関するUIコンポーネント | LibraryView.tsx, CreateLibraryButton.tsx |
-| `features/library/hooks/` | マイ書庫のデータ取得・操作hooks | useLibrary.ts, useCreateLibrary.ts |
-| `features/library/services/` | マイ書庫のAPI呼び出し | libraryService.ts |
-| `features/books/components/` | 本の管理に関するUIコンポーネント | BookList.tsx, BookCard.tsx, BookForm.tsx, AddBookModal.tsx, BookDetailModal.tsx, EditBookModal.tsx, UnreadView.tsx, WishlistView.tsx, CompletedView.tsx |
-| `features/books/hooks/` | 本のデータ取得・操作hooks | useBooks.ts, useBook.ts, useCreateBook.ts, useUpdateBook.ts, useDeleteBook.ts, useIsbnSearch.ts |
-| `features/books/services/` | 本のAPI呼び出し | bookService.ts, isbnService.ts |
-| `features/memos/components/` | メモに関するUIコンポーネント | MemoList.tsx, MemoForm.tsx, MemoItem.tsx |
-| `features/memos/hooks/` | メモのデータ取得・操作hooks | useMemos.ts, useCreateMemo.ts, useUpdateMemo.ts, useDeleteMemo.ts |
-| `features/memos/services/` | メモのAPI呼び出し | memoService.ts |
-| `components/` | 複数機能で使用する共通コンポーネント | Button.tsx, Input.tsx, Modal.tsx, Loading.tsx |
-| `hooks/` | 複数機能で使用する共通hooks | useLocalStorage.ts, useCopyToClipboard.ts |
-| `pages/` | ルートに対応するページコンポーネント | TopPage.tsx, LibraryPage.tsx |
-| `types/` | フロントエンド固有の型定義 | router.types.ts |
-| `utils/` | 汎用ユーティリティ関数 | fetcher.ts, formatDate.ts |
+| パス                           | 責務                                 | 含まれるファイル                                                                                                                                        |
+| ------------------------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `features/`                    | 機能ごとにまとまったモジュール       | 各機能のcomponents, hooks, services                                                                                                                     |
+| `features/library/components/` | マイ書庫に関するUIコンポーネント     | LibraryView.tsx, CreateLibraryButton.tsx                                                                                                                |
+| `features/library/hooks/`      | マイ書庫のデータ取得・操作hooks      | useLibrary.ts, useCreateLibrary.ts                                                                                                                      |
+| `features/library/services/`   | マイ書庫のAPI呼び出し                | libraryService.ts                                                                                                                                       |
+| `features/books/components/`   | 本の管理に関するUIコンポーネント     | BookList.tsx, BookCard.tsx, BookForm.tsx, AddBookModal.tsx, BookDetailModal.tsx, EditBookModal.tsx, UnreadView.tsx, WishlistView.tsx, CompletedView.tsx |
+| `features/books/hooks/`        | 本のデータ取得・操作hooks            | useBooks.ts, useBook.ts, useCreateBook.ts, useUpdateBook.ts, useDeleteBook.ts, useIsbnSearch.ts                                                         |
+| `features/books/services/`     | 本のAPI呼び出し                      | bookService.ts, isbnService.ts                                                                                                                          |
+| `features/memos/components/`   | メモに関するUIコンポーネント         | MemoList.tsx, MemoForm.tsx, MemoItem.tsx                                                                                                                |
+| `features/memos/hooks/`        | メモのデータ取得・操作hooks          | useMemos.ts, useCreateMemo.ts, useUpdateMemo.ts, useDeleteMemo.ts                                                                                       |
+| `features/memos/services/`     | メモのAPI呼び出し                    | memoService.ts                                                                                                                                          |
+| `components/`                  | 複数機能で使用する共通コンポーネント | Button.tsx, Input.tsx, Modal.tsx, Loading.tsx                                                                                                           |
+| `hooks/`                       | 複数機能で使用する共通hooks          | useLocalStorage.ts, useCopyToClipboard.ts                                                                                                               |
+| `pages/`                       | ルートに対応するページコンポーネント | TopPage.tsx, LibraryPage.tsx                                                                                                                            |
+| `types/`                       | フロントエンド固有の型定義           | router.types.ts                                                                                                                                         |
+| `utils/`                       | 汎用ユーティリティ関数               | fetcher.ts, formatDate.ts                                                                                                                               |
 
 ### Backend
 
-| パス | 責務 | 含まれるファイル |
-| ---- | ---- | ---------------- |
-| `routes/` | エンドポイントのルーティング定義 | libraries.ts, books.ts, memos.ts, isbn.ts, index.ts |
-| `controllers/` | リクエストの受け取りとレスポンスの返却 | libraryController.ts, bookController.ts, memoController.ts, isbnController.ts |
-| `services/` | ビジネスロジックの実装 | libraryService.ts, bookService.ts, memoService.ts, isbnService.ts |
-| `repositories/` | Prismaを使用したデータアクセス | libraryRepository.ts, bookRepository.ts, memoRepository.ts |
-| `middlewares/` | リクエスト処理の共通処理 | errorHandler.ts, validator.ts |
-| `types/` | バックエンド固有の型定義 | context.types.ts |
-| `utils/` | 汎用ユーティリティ関数 | uuid.ts, categoryMapper.ts |
+| パス            | 責務                                   | 含まれるファイル                                                              |
+| --------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `routes/`       | エンドポイントのルーティング定義       | libraries.ts, books.ts, memos.ts, isbn.ts, index.ts                           |
+| `controllers/`  | リクエストの受け取りとレスポンスの返却 | libraryController.ts, bookController.ts, memoController.ts, isbnController.ts |
+| `services/`     | ビジネスロジックの実装                 | libraryService.ts, bookService.ts, memoService.ts, isbnService.ts             |
+| `repositories/` | Prismaを使用したデータアクセス         | libraryRepository.ts, bookRepository.ts, memoRepository.ts                    |
+| `middlewares/`  | リクエスト処理の共通処理               | errorHandler.ts, validator.ts                                                 |
+| `types/`        | バックエンド固有の型定義               | context.types.ts                                                              |
+| `utils/`        | 汎用ユーティリティ関数                 | uuid.ts, categoryMapper.ts                                                    |
 
 ### Shared
 
-| パス | 責務 | 含まれるファイル |
-| ---- | ---- | ---------------- |
-| `types/` | フロントエンド・バックエンドで共有する型定義 | library.ts, book.ts, memo.ts, api.ts |
-| `schemas/` | zodバリデーションスキーマ（型定義と対応） | library.ts, book.ts, memo.ts |
-| `constants/` | 共有定数（ステータス、カテゴリ等） | bookStatus.ts, bookCategory.ts |
+| パス         | 責務                                         | 含まれるファイル                     |
+| ------------ | -------------------------------------------- | ------------------------------------ |
+| `types/`     | フロントエンド・バックエンドで共有する型定義 | library.ts, book.ts, memo.ts, api.ts |
+| `schemas/`   | zodバリデーションスキーマ（型定義と対応）    | library.ts, book.ts, memo.ts         |
+| `constants/` | 共有定数（ステータス、カテゴリ等）           | bookStatus.ts, bookCategory.ts       |
 
 ## 3. レイヤー間データフロー
 
@@ -211,20 +211,20 @@ flowchart LR
 
 ## 4. ファイル命名規則
 
-| 種類 | 規則 | 例 |
-| ---- | ---- | -- |
-| コンポーネント | PascalCase | `BookList.tsx`, `BookCard.tsx` |
-| hooks | camelCase + useプレフィックス | `useBooks.ts`, `useCreateBook.ts` |
-| services | camelCase + Service | `bookService.ts`, `memoService.ts` |
-| controllers | camelCase + Controller | `bookController.ts` |
-| repositories | camelCase + Repository | `bookRepository.ts` |
-| routes | camelCase (リソース名) | `libraries.ts`, `books.ts` |
-| テスト | 対象ファイル名.test.ts(x) | `BookList.test.tsx`, `bookService.test.ts` |
-| 型定義 | camelCase | `book.ts`, `api.ts` |
-| スキーマ | camelCase (モデル名) | `book.ts`, `memo.ts` |
-| 定数 | camelCase | `bookStatus.ts`, `bookCategory.ts` |
-| ページ | PascalCase + Page | `TopPage.tsx`, `LibraryPage.tsx` |
-| モーダル | PascalCase + Modal | `AddBookModal.tsx`, `BookDetailModal.tsx` |
+| 種類           | 規則                          | 例                                         |
+| -------------- | ----------------------------- | ------------------------------------------ |
+| コンポーネント | PascalCase                    | `BookList.tsx`, `BookCard.tsx`             |
+| hooks          | camelCase + useプレフィックス | `useBooks.ts`, `useCreateBook.ts`          |
+| services       | camelCase + Service           | `bookService.ts`, `memoService.ts`         |
+| controllers    | camelCase + Controller        | `bookController.ts`                        |
+| repositories   | camelCase + Repository        | `bookRepository.ts`                        |
+| routes         | camelCase (リソース名)        | `libraries.ts`, `books.ts`                 |
+| テスト         | 対象ファイル名.test.ts(x)     | `BookList.test.tsx`, `bookService.test.ts` |
+| 型定義         | camelCase                     | `book.ts`, `api.ts`                        |
+| スキーマ       | camelCase (モデル名)          | `book.ts`, `memo.ts`                       |
+| 定数           | camelCase                     | `bookStatus.ts`, `bookCategory.ts`         |
+| ページ         | PascalCase + Page             | `TopPage.tsx`, `LibraryPage.tsx`           |
+| モーダル       | PascalCase + Modal            | `AddBookModal.tsx`, `BookDetailModal.tsx`  |
 
 ## 5. モジュール間の依存関係
 

@@ -9,6 +9,7 @@
 ```
 
 例:
+
 ```
 /add-feature マイ書庫の作成 #9
 /add-feature 本の登録機能 #10
@@ -33,11 +34,13 @@
 3. ブランチを作成して切り替える: `git checkout -b {ブランチ名}`
 
 **ブランチ名の例:**
+
 - `#9 マイ書庫の作成` → `9-library-create`
 - `#10 本の登録機能` → `10-book-register`
 - `#15 メモの追加` → `15-memo-add`
 
 **推論ルール:**
+
 - 日本語の動詞を英語の動詞に変換（作成→create、登録→register、追加→add、編集→edit、削除→delete）
 - 対象のリソースを英語に変換（マイ書庫→library、本→book、メモ→memo）
 - ケバブケースで結合（例: library-create, book-register）

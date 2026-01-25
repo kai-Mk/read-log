@@ -36,15 +36,15 @@ flowchart LR
 
 ### 2.1 フロントエンド
 
-| 技術 | バージョン | 選定理由 |
-| ---- | ---------- | -------- |
-| React | ^18.2.0 | コンポーネントベースの開発、豊富なエコシステム |
-| Vite | ^5.0.0 | 高速なHMR、シンプルな設定 |
-| TypeScript | ^5.3.0 | 型安全性、開発体験の向上 |
-| React Router | ^6.20.0 | 宣言的なルーティング、ネストルート対応 |
-| SWR | ^2.2.0 | データフェッチとキャッシュ管理、リアルタイム更新 |
-| react-hook-form | ^7.48.0 | パフォーマンスの高いフォーム管理 |
-| Tailwind CSS | ^3.3.0 | ユーティリティファーストCSS、高速なスタイリング |
+| 技術            | バージョン | 選定理由                                         |
+| --------------- | ---------- | ------------------------------------------------ |
+| React           | ^18.2.0    | コンポーネントベースの開発、豊富なエコシステム   |
+| Vite            | ^5.0.0     | 高速なHMR、シンプルな設定                        |
+| TypeScript      | ^5.3.0     | 型安全性、開発体験の向上                         |
+| React Router    | ^6.20.0    | 宣言的なルーティング、ネストルート対応           |
+| SWR             | ^2.2.0     | データフェッチとキャッシュ管理、リアルタイム更新 |
+| react-hook-form | ^7.48.0    | パフォーマンスの高いフォーム管理                 |
+| Tailwind CSS    | ^3.3.0     | ユーティリティファーストCSS、高速なスタイリング  |
 
 **主要な設定**:
 
@@ -54,11 +54,11 @@ flowchart LR
 
 ### 2.2 バックエンド
 
-| 技術 | バージョン | 選定理由 |
-| ---- | ---------- | -------- |
-| Hono | ^3.11.0 | 軽量、TypeScriptネイティブ、Edge対応 |
-| Node.js | ^22.0.0 | 最新LTS、安定性 |
-| Prisma | ^5.7.0 | 型安全なORM、マイグレーション管理 |
+| 技術    | バージョン | 選定理由                             |
+| ------- | ---------- | ------------------------------------ |
+| Hono    | ^3.11.0    | 軽量、TypeScriptネイティブ、Edge対応 |
+| Node.js | ^22.0.0    | 最新LTS、安定性                      |
+| Prisma  | ^5.7.0     | 型安全なORM、マイグレーション管理    |
 
 **主要な設定**:
 
@@ -67,9 +67,9 @@ flowchart LR
 
 ### 2.3 データベース
 
-| 技術 | バージョン | 選定理由 |
-| ---- | ---------- | -------- |
-| PostgreSQL | 16 | リレーショナル、JSON対応、信頼性 |
+| 技術       | バージョン | 選定理由                         |
+| ---------- | ---------- | -------------------------------- |
+| PostgreSQL | 16         | リレーショナル、JSON対応、信頼性 |
 
 **主要な設定**:
 
@@ -88,7 +88,7 @@ services:
     image: postgres:16-alpine
     container_name: read-log-db
     ports:
-      - "5432:5432"
+      - '5432:5432'
     environment:
       - POSTGRES_USER=readlog
       - POSTGRES_PASSWORD=readlog
@@ -102,64 +102,64 @@ volumes:
 
 ### 3.2 環境変数
 
-| 変数名 | 説明 | 例 |
-| ------ | ---- | -- |
+| 変数名       | 説明                 | 例                                                  |
+| ------------ | -------------------- | --------------------------------------------------- |
 | DATABASE_URL | PostgreSQL接続文字列 | postgresql://readlog:readlog@localhost:5432/readlog |
-| PORT | APIサーバーポート | 3000 |
-| CORS_ORIGIN | 許可するオリジン | http://localhost:5173 |
+| PORT         | APIサーバーポート    | 3000                                                |
+| CORS_ORIGIN  | 許可するオリジン     | http://localhost:5173                               |
 
 ### 3.3 ポート設定
 
-| サービス | ポート | 用途 |
-| -------- | ------ | ---- |
-| Frontend (Vite) | 5173 | 開発サーバー |
-| Backend (Hono) | 3000 | APIサーバー |
-| PostgreSQL | 5432 | データベース |
+| サービス        | ポート | 用途         |
+| --------------- | ------ | ------------ |
+| Frontend (Vite) | 5173   | 開発サーバー |
+| Backend (Hono)  | 3000   | APIサーバー  |
+| PostgreSQL      | 5432   | データベース |
 
 ## 4. 依存関係
 
 ### 4.1 フロントエンド
 
-| パッケージ | バージョン | 用途 |
-| ---------- | ---------- | ---- |
-| react | ^18.2.0 | UIライブラリ |
-| react-dom | ^18.2.0 | DOM レンダリング |
-| react-router-dom | ^6.20.0 | ルーティング |
-| swr | ^2.2.0 | データフェッチ・キャッシュ |
-| react-hook-form | ^7.48.0 | フォーム管理 |
-| @hookform/resolvers | ^3.3.0 | zodとの連携 |
-| tailwindcss | ^3.3.0 | スタイリング |
-| lucide-react | ^0.294.0 | アイコン |
-| luxon | ^3.4.0 | 日付操作 |
+| パッケージ          | バージョン | 用途                       |
+| ------------------- | ---------- | -------------------------- |
+| react               | ^18.2.0    | UIライブラリ               |
+| react-dom           | ^18.2.0    | DOM レンダリング           |
+| react-router-dom    | ^6.20.0    | ルーティング               |
+| swr                 | ^2.2.0     | データフェッチ・キャッシュ |
+| react-hook-form     | ^7.48.0    | フォーム管理               |
+| @hookform/resolvers | ^3.3.0     | zodとの連携                |
+| tailwindcss         | ^3.3.0     | スタイリング               |
+| lucide-react        | ^0.294.0   | アイコン                   |
+| luxon               | ^3.4.0     | 日付操作                   |
 
 ### 4.2 バックエンド
 
-| パッケージ | バージョン | 用途 |
-| ---------- | ---------- | ---- |
-| hono | ^3.11.0 | Webフレームワーク |
-| @hono/node-server | ^1.3.0 | Node.jsアダプター |
-| @prisma/client | ^5.7.0 | Prismaクライアント |
-| prisma | ^5.7.0 | Prisma CLI |
+| パッケージ        | バージョン | 用途               |
+| ----------------- | ---------- | ------------------ |
+| hono              | ^3.11.0    | Webフレームワーク  |
+| @hono/node-server | ^1.3.0     | Node.jsアダプター  |
+| @prisma/client    | ^5.7.0     | Prismaクライアント |
+| prisma            | ^5.7.0     | Prisma CLI         |
 
 ### 4.3 共通
 
-| パッケージ | バージョン | 用途 |
-| ---------- | ---------- | ---- |
-| zod | ^3.22.0 | スキーマバリデーション |
-| typescript | ^5.3.0 | 型システム |
-| @types/luxon | ^3.3.0 | Luxonの型定義 |
+| パッケージ   | バージョン | 用途                   |
+| ------------ | ---------- | ---------------------- |
+| zod          | ^3.22.0    | スキーマバリデーション |
+| typescript   | ^5.3.0     | 型システム             |
+| @types/luxon | ^3.3.0     | Luxonの型定義          |
 
 ### 4.4 開発
 
-| パッケージ | バージョン | 用途 |
-| ---------- | ---------- | ---- |
-| vitest | ^1.0.0 | テストランナー |
-| @testing-library/react | ^14.1.0 | Reactコンポーネントテスト |
-| @testing-library/jest-dom | ^6.1.0 | DOMアサーション拡張 |
-| msw | ^2.0.0 | APIモック |
-| eslint | ^8.55.0 | リンター |
-| prettier | ^3.1.0 | フォーマッター |
-| @vitejs/plugin-react-swc | ^3.5.0 | React SWCプラグイン |
+| パッケージ                | バージョン | 用途                      |
+| ------------------------- | ---------- | ------------------------- |
+| vitest                    | ^1.0.0     | テストランナー            |
+| @testing-library/react    | ^14.1.0    | Reactコンポーネントテスト |
+| @testing-library/jest-dom | ^6.1.0     | DOMアサーション拡張       |
+| msw                       | ^2.0.0     | APIモック                 |
+| eslint                    | ^8.55.0    | リンター                  |
+| prettier                  | ^3.1.0     | フォーマッター            |
+| @vitejs/plugin-react-swc  | ^3.5.0     | React SWCプラグイン       |
 
 ## 5. パフォーマンス設計
 
@@ -187,11 +187,11 @@ const swrConfig = {
 
 ### 5.3 目標値
 
-| 指標 | 目標値 | 施策 |
-| ---- | ------ | ---- |
-| ページ読み込み | 3秒以内 | コード分割、キャッシュ活用 |
-| ISBN検索レスポンス | 2秒以内 | バックエンドでのキャッシュ |
-| API レスポンス | 500ms以内 | データベースインデックス最適化 |
+| 指標               | 目標値    | 施策                           |
+| ------------------ | --------- | ------------------------------ |
+| ページ読み込み     | 3秒以内   | コード分割、キャッシュ活用     |
+| ISBN検索レスポンス | 2秒以内   | バックエンドでのキャッシュ     |
+| API レスポンス     | 500ms以内 | データベースインデックス最適化 |
 
 ## 6. セキュリティ設計
 
@@ -215,7 +215,10 @@ const swrConfig = {
 export const createBookSchema = z.object({
   title: z.string().min(1).max(200),
   author: z.string().min(1).max(100).optional(),
-  isbn: z.string().regex(/^(97[89])?\d{9}[\dX]$/).optional(),
+  isbn: z
+    .string()
+    .regex(/^(97[89])?\d{9}[\dX]$/)
+    .optional(),
   // ...
 });
 ```
@@ -228,11 +231,14 @@ export const createBookSchema = z.object({
 
 ```typescript
 // Hono CORS設定
-app.use('*', cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
-  allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
-  allowHeaders: ['Content-Type'],
-}));
+app.use(
+  '*',
+  cors({
+    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    allowHeaders: ['Content-Type'],
+  })
+);
 ```
 
 ### 6.4 機密情報の管理

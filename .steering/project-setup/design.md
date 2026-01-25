@@ -14,57 +14,57 @@
 
 ### ルートディレクトリ
 
-| ファイルパス | 種類 | 責務 |
-| ------------ | ---- | ---- |
-| `package.json` | 設定 | ルートパッケージ、workspaceスクリプト |
-| `pnpm-workspace.yaml` | 設定 | pnpm workspace定義 |
-| `tsconfig.base.json` | 設定 | 共通TypeScript設定 |
-| `.eslintrc.js` | 設定 | ESLint設定 |
-| `.prettierrc` | 設定 | Prettier設定 |
-| `.gitignore` | 設定 | Git除外設定 |
-| `docker-compose.yml` | 設定 | PostgreSQL |
-| `.env.example` | 設定 | 環境変数テンプレート |
+| ファイルパス          | 種類 | 責務                                  |
+| --------------------- | ---- | ------------------------------------- |
+| `package.json`        | 設定 | ルートパッケージ、workspaceスクリプト |
+| `pnpm-workspace.yaml` | 設定 | pnpm workspace定義                    |
+| `tsconfig.base.json`  | 設定 | 共通TypeScript設定                    |
+| `.eslintrc.js`        | 設定 | ESLint設定                            |
+| `.prettierrc`         | 設定 | Prettier設定                          |
+| `.gitignore`          | 設定 | Git除外設定                           |
+| `docker-compose.yml`  | 設定 | PostgreSQL                            |
+| `.env.example`        | 設定 | 環境変数テンプレート                  |
 
 ### packages/frontend
 
-| ファイルパス | 種類 | 責務 |
-| ------------ | ---- | ---- |
-| `package.json` | 設定 | フロントエンド依存関係 |
-| `tsconfig.json` | 設定 | TypeScript設定（base継承） |
-| `vite.config.ts` | 設定 | Vite設定 |
-| `tailwind.config.js` | 設定 | Tailwind CSS設定 |
-| `postcss.config.js` | 設定 | PostCSS設定 |
-| `index.html` | エントリ | HTMLテンプレート |
-| `src/main.tsx` | エントリ | Reactエントリーポイント |
-| `src/App.tsx` | コンポーネント | ルートコンポーネント |
+| ファイルパス         | 種類           | 責務                       |
+| -------------------- | -------------- | -------------------------- |
+| `package.json`       | 設定           | フロントエンド依存関係     |
+| `tsconfig.json`      | 設定           | TypeScript設定（base継承） |
+| `vite.config.ts`     | 設定           | Vite設定                   |
+| `tailwind.config.js` | 設定           | Tailwind CSS設定           |
+| `postcss.config.js`  | 設定           | PostCSS設定                |
+| `index.html`         | エントリ       | HTMLテンプレート           |
+| `src/main.tsx`       | エントリ       | Reactエントリーポイント    |
+| `src/App.tsx`        | コンポーネント | ルートコンポーネント       |
 
 ### packages/backend
 
-| ファイルパス | 種類 | 責務 |
-| ------------ | ---- | ---- |
-| `package.json` | 設定 | バックエンド依存関係 |
-| `tsconfig.json` | 設定 | TypeScript設定（base継承） |
-| `src/index.ts` | エントリ | Honoエントリーポイント |
-| `prisma/schema.prisma` | 設定 | Prismaスキーマ（空） |
+| ファイルパス           | 種類     | 責務                       |
+| ---------------------- | -------- | -------------------------- |
+| `package.json`         | 設定     | バックエンド依存関係       |
+| `tsconfig.json`        | 設定     | TypeScript設定（base継承） |
+| `src/index.ts`         | エントリ | Honoエントリーポイント     |
+| `prisma/schema.prisma` | 設定     | Prismaスキーマ（空）       |
 
 ### packages/shared
 
-| ファイルパス | 種類 | 責務 |
-| ------------ | ---- | ---- |
-| `package.json` | 設定 | 共有パッケージ |
-| `tsconfig.json` | 設定 | TypeScript設定（base継承） |
-| `src/index.ts` | エントリ | エクスポート |
+| ファイルパス    | 種類     | 責務                       |
+| --------------- | -------- | -------------------------- |
+| `package.json`  | 設定     | 共有パッケージ             |
+| `tsconfig.json` | 設定     | TypeScript設定（base継承） |
+| `src/index.ts`  | エントリ | エクスポート               |
 
 ### husky + lint-staged
 
-| ファイルパス | 種類 | 責務 |
-| ------------ | ---- | ---- |
+| ファイルパス        | 種類   | 責務                        |
+| ------------------- | ------ | --------------------------- |
 | `.husky/pre-commit` | フック | コミット前にlint-staged実行 |
 
 ### CI/CD
 
-| ファイルパス | 種類 | 責務 |
-| ------------ | ---- | ---- |
+| ファイルパス               | 種類         | 責務                   |
+| -------------------------- | ------------ | ---------------------- |
 | `.github/workflows/ci.yml` | ワークフロー | lint, type-check, test |
 
 ## 4. 依存関係
