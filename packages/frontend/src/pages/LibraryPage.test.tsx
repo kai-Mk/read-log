@@ -29,6 +29,34 @@ const mockBooks: Book[] = [
     updatedAt: new Date(),
     deletedAt: null,
   },
+  {
+    id: 'book-2',
+    libraryId: 'library-uuid',
+    title: 'Clean Code',
+    author: 'Robert C. Martin',
+    isbn: '9784048930598',
+    coverImage: 'https://example.com/cover2.jpg',
+    pageCount: 464,
+    status: 'wishlist' as const,
+    category: 'tech' as const,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    deletedAt: null,
+  },
+  {
+    id: 'book-3',
+    libraryId: 'library-uuid',
+    title: 'テスト駆動開発',
+    author: 'Kent Beck',
+    isbn: '9784274217883',
+    coverImage: 'https://example.com/cover3.jpg',
+    pageCount: 344,
+    status: 'completed' as const,
+    category: 'tech' as const,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    deletedAt: null,
+  },
 ];
 
 vi.mock('../features/library/hooks/useLibrary', () => ({
@@ -126,5 +154,55 @@ describe('LibraryPage', () => {
     }
 
     expect(screen.getByText('本の詳細')).toBeInTheDocument();
+  });
+
+  it('ビュー切り替えタブが表示される', () => {
+    renderWithRouter();
+
+    expect(screen.getByRole('tab', { name: 'すべて' })).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: '積読' })).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: '読みたい' })).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: '読了' })).toBeInTheDocument();
+  });
+
+  it('積読タブをクリックするとUnreadViewが表示される', async () => {
+    const user = userEvent.setup();
+    renderWithRouter();
+
+    await user.click(screen.getByRole('tab', { name: '積読' }));
+
+    expect(screen.getByTestId('unread-stack')).toBeInTheDocument();
+  });
+
+  it('読みたいタブをクリックするとWishlistViewが表示される', async () => {
+    const user = userEvent.setup();
+    renderWithRouter();
+
+    await user.click(screen.getByRole('tab', { name: '読みたい' }));
+
+    expect(screen.getByTestId('wishlist-display')).toBeInTheDocument();
+  });
+
+  it('読了タブをクリックするとCompletedViewが表示される', async () => {
+    const user = userEvent.setup();
+    renderWithRouter();
+
+    await user.click(screen.getByRole('tab', { name: '読了' }));
+
+    expect(screen.getByTestId('completed-bookshelf')).toBeInTheDocument();
+  });
+
+  it('すべてタブをクリックするとAllBooksViewが表示される', async () => {
+    const user = userEvent.setup();
+    renderWithRouter();
+
+    // まず積読タブに切り替え
+    await user.click(screen.getByRole('tab', { name: '積読' }));
+    // すべてタブに戻す
+    await user.click(screen.getByRole('tab', { name: 'すべて' }));
+
+    // すべてのステータスの本が表示される
+    expect(screen.getByText('リーダブルコード')).toBeInTheDocument();
+    expect(screen.getByText('Clean Code')).toBeInTheDocument();
   });
 });
