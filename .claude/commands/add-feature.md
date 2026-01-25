@@ -21,7 +21,8 @@
 
 ### ステップ1: issueの確認
 
-1. 指定されたissue番号の内容を `gh issue view <番号>` で取得する
+1. 指定されたissue番号の内容を `gh issue view <番号> --json title,body,state` で取得する
+   - 注意: `--json`オプションを使わないとProjects classic廃止によるエラーが発生する
 2. issueのタイトルと内容をユーザーに表示する
 3. このissueで作業を開始してよいか確認する
 
