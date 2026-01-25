@@ -72,26 +72,26 @@
 - [x] routes/index.ts にルート追加
 - [ ] API動作確認（curl/httpie）
 
-## Phase 5: Frontend - Services
+## Phase 5: Frontend - Services ✅
 
 ### テストケース: bookService.test.ts
 
-- [ ] `createBook`: POST /api/libraries/:libraryId/books を呼び出す
-- [ ] `createBook`: 作成された本を返す
-- [ ] `getBooks`: GET /api/libraries/:libraryId/books を呼び出す
-- [ ] `getBooks`: 本一覧を返す
-- [ ] `getBooks`: クエリパラメータを渡せる
+- [x] `createBook`: POST /api/libraries/:libraryId/books を呼び出す
+- [x] `createBook`: 作成された本を返す
+- [x] `getBooks`: GET /api/libraries/:libraryId/books を呼び出す
+- [x] `getBooks`: 本一覧を返す
+- [x] `getBooks`: クエリパラメータを渡せる
 
 ### テストケース: isbnService.test.ts
 
-- [ ] `searchByIsbn`: GET /api/isbn/:isbn を呼び出す
-- [ ] `searchByIsbn`: 書籍情報を返す
-- [ ] `searchByIsbn`: 404の場合はnullを返す
+- [x] `searchByIsbn`: GET /api/isbn/:isbn を呼び出す
+- [x] `searchByIsbn`: 書籍情報を返す
+- [x] `searchByIsbn`: 404の場合はnullを返す
 
 ### 実装
 
-- [ ] features/books/services/bookService.ts 実装
-- [ ] features/books/services/isbnService.ts 実装
+- [x] features/books/services/bookService.ts 実装
+- [x] features/books/services/isbnService.ts 実装
 
 ## Phase 6: Frontend - Hooks
 
