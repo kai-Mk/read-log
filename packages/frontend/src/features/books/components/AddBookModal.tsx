@@ -92,6 +92,28 @@ export function AddBookModal({ isOpen, onClose, onSuccess, libraryId }: AddBookM
                 </button>
               </div>
               {searchError && <p className="mt-2 text-sm text-red-600">{searchError.message}</p>}
+              <a
+                href="https://www.hanmoto.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+              >
+                ISBNを検索する
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
             </div>
 
             <div className="text-center">

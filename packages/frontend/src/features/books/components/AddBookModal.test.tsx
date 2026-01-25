@@ -75,4 +75,15 @@ describe('AddBookModal', () => {
 
     expect(mockOnClose).toHaveBeenCalled();
   });
+
+  it('ISBN検索用の外部リンクが表示される', () => {
+    render(
+      <AddBookModal isOpen onClose={mockOnClose} onSuccess={mockOnSuccess} libraryId={libraryId} />
+    );
+
+    const link = screen.getByRole('link', { name: /ISBNを検索する/ });
+    expect(link).toHaveAttribute('href', 'https://www.hanmoto.com/');
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  });
 });
