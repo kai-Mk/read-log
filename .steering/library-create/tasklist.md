@@ -47,19 +47,19 @@
 - [x] routes/index.ts にルート追加
 - [x] API動作確認（curl/httpie）
 
-## Phase 4: Frontend - Service
+## Phase 4: Frontend - Service ✅
 
 ### テストケース: libraryService.test.ts
 
-- [ ] `createLibrary`: POST /api/libraries を呼び出す
-- [ ] `createLibrary`: 作成されたマイ書庫を返す
-- [ ] `getLibrary`: GET /api/libraries/:id を呼び出す
-- [ ] `getLibrary`: マイ書庫情報を返す
-- [ ] `getLibrary`: 404の場合はエラーを投げる
+- [x] `createLibrary`: POST /api/libraries を呼び出す
+- [x] `createLibrary`: 作成されたマイ書庫を返す
+- [x] `getLibrary`: GET /api/libraries/:id を呼び出す
+- [x] `getLibrary`: マイ書庫情報を返す
+- [x] `getLibrary`: 404の場合はエラーを投げる
 
 ### 実装
 
-- [ ] features/library/services/libraryService.ts 実装
+- [x] features/library/services/libraryService.ts 実装
 
 ## Phase 5: Frontend - Hooks
 
