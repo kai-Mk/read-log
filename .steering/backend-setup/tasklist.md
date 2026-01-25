@@ -79,19 +79,19 @@ TDDサイクル（Red → Green → Refactor）に基づいてバックエンド
 - [x] **Green**: `routes/index.ts` を作成
 - [x] **Refactor**: ヘルスチェックエンドポイントの移動
 
-### Phase 5: ディレクトリ構成整備
+### Phase 5: ディレクトリ構成整備 ✅
 
 #### 5.1 空ディレクトリの作成
 
-- [ ] `controllers/` ディレクトリと `.gitkeep` 作成
-- [ ] `services/` ディレクトリと `.gitkeep` 作成
-- [ ] `repositories/` ディレクトリと `.gitkeep` 作成
+- [x] `controllers/` ディレクトリと `.gitkeep` 作成
+- [x] `services/` ディレクトリと `.gitkeep` 作成
+- [x] `repositories/` ディレクトリと `.gitkeep` 作成
 
 #### 5.2 型定義
 
-- [ ] **Red**: Context 型拡張テストを作成
-- [ ] **Green**: `types/context.ts` を作成
-- [ ] **Refactor**: Prisma Client の型統合
+- [x] **Red**: Context 型拡張テストを作成
+- [x] **Green**: `types/context.ts` を作成
+- [x] **Refactor**: Prisma Client の型統合
 
 ### Phase 6: 統合確認
 
@@ -113,5 +113,5 @@ TDDサイクル（Red → Green → Refactor）に基づいてバックエンド
 - [x] CORS ミドルウェアが動作している
 - [x] エラーハンドリングミドルウェアが動作している
 - [x] バリデーションミドルウェアが動作している
-- [ ] ディレクトリ構成が整備されている
+- [x] ディレクトリ構成が整備されている
 - [ ] すべてのテストがパスしている
