@@ -25,7 +25,7 @@ describe('バリデーションミドルウェア', () => {
       });
 
       expect(res.status).toBe(200);
-      const body = await res.json();
+      const body = (await res.json()) as { received: { name: string } };
       expect(body.received).toEqual({ name: 'テスト' });
     });
 
@@ -41,7 +41,7 @@ describe('バリデーションミドルウェア', () => {
       });
 
       expect(res.status).toBe(400);
-      const body = await res.json();
+      const body = (await res.json()) as { code: string };
       expect(body.code).toBe('VALIDATION_ERROR');
     });
   });
@@ -63,7 +63,7 @@ describe('バリデーションミドルウェア', () => {
       const res = await app.request(`/test/${uuid}`);
 
       expect(res.status).toBe(200);
-      const body = await res.json();
+      const body = (await res.json()) as { received: { id: string } };
       expect(body.received).toEqual({ id: uuid });
     });
 
@@ -75,7 +75,7 @@ describe('バリデーションミドルウェア', () => {
       const res = await app.request('/test/invalid-uuid');
 
       expect(res.status).toBe(400);
-      const body = await res.json();
+      const body = (await res.json()) as { code: string };
       expect(body.code).toBe('VALIDATION_ERROR');
     });
   });
@@ -97,7 +97,7 @@ describe('バリデーションミドルウェア', () => {
       const res = await app.request('/test?page=1&limit=10');
 
       expect(res.status).toBe(200);
-      const body = await res.json();
+      const body = (await res.json()) as { received: { page: string; limit: string } };
       expect(body.received).toEqual({ page: '1', limit: '10' });
     });
 
@@ -109,7 +109,7 @@ describe('バリデーションミドルウェア', () => {
       const res = await app.request('/test?page=invalid');
 
       expect(res.status).toBe(400);
-      const body = await res.json();
+      const body = (await res.json()) as { code: string };
       expect(body.code).toBe('VALIDATION_ERROR');
     });
   });

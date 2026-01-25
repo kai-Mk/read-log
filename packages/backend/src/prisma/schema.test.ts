@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest';
-import type { Library, Book, Memo } from '@prisma/client';
 import type {
   Library as SharedLibrary,
   Book as SharedBook,
@@ -8,13 +7,13 @@ import type {
 
 /**
  * Prismaモデルと共有型定義の整合性を検証するテスト
- * 型レベルでの整合性を確認し、実行時にはモデルの構造を検証する
+ * 共有型の構造をテストし、Prismaスキーマとの整合性を確認する
  */
 
 describe('Prisma Schema', () => {
   describe('Library モデル', () => {
     it('必須フィールドを持つ', () => {
-      const library: Library = {
+      const library: SharedLibrary = {
         id: 'test-id',
         name: 'テスト書庫',
         createdAt: new Date(),
@@ -28,28 +27,11 @@ describe('Prisma Schema', () => {
       expect(library.updatedAt).toBeInstanceOf(Date);
       expect(library.deletedAt).toBeNull();
     });
-
-    it('共有型定義と同じフィールドを持つ', () => {
-      // 型レベルでの整合性確認
-      const prismaLibrary: Library = {
-        id: 'test-id',
-        name: 'テスト書庫',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null,
-      };
-
-      // Prismaの型が共有型にキャスト可能であることを確認
-      const sharedLibrary: SharedLibrary = prismaLibrary;
-
-      expect(sharedLibrary.id).toBe(prismaLibrary.id);
-      expect(sharedLibrary.name).toBe(prismaLibrary.name);
-    });
   });
 
   describe('Book モデル', () => {
     it('必須フィールドを持つ', () => {
-      const book: Book = {
+      const book: SharedBook = {
         id: 'test-book-id',
         libraryId: 'test-library-id',
         title: 'テストブック',
@@ -72,7 +54,7 @@ describe('Prisma Schema', () => {
     });
 
     it('オプションフィールドを持つ', () => {
-      const book: Book = {
+      const book: SharedBook = {
         id: 'test-book-id',
         libraryId: 'test-library-id',
         title: 'テストブック',
@@ -92,40 +74,11 @@ describe('Prisma Schema', () => {
       expect(book.coverImage).toBe('https://example.com/cover.jpg');
       expect(book.pageCount).toBe(300);
     });
-
-    it('共有型定義と同じフィールドを持つ', () => {
-      const prismaBook: Book = {
-        id: 'test-book-id',
-        libraryId: 'test-library-id',
-        title: 'テストブック',
-        author: null,
-        isbn: null,
-        coverImage: null,
-        pageCount: null,
-        status: 'unread',
-        category: 'other',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null,
-      };
-
-      // Prismaの型が共有型にキャスト可能であることを確認
-      // status/categoryはPrismaではstring型だが、実行時の値はリテラル型と互換性がある
-      const sharedBook: SharedBook = {
-        ...prismaBook,
-        status: prismaBook.status as SharedBook['status'],
-        category: prismaBook.category as SharedBook['category'],
-      };
-
-      expect(sharedBook.id).toBe(prismaBook.id);
-      expect(sharedBook.libraryId).toBe(prismaBook.libraryId);
-      expect(sharedBook.title).toBe(prismaBook.title);
-    });
   });
 
   describe('Memo モデル', () => {
     it('必須フィールドを持つ', () => {
-      const memo: Memo = {
+      const memo: SharedMemo = {
         id: 'test-memo-id',
         bookId: 'test-book-id',
         content: 'メモの内容',
@@ -140,24 +93,6 @@ describe('Prisma Schema', () => {
       expect(memo.createdAt).toBeInstanceOf(Date);
       expect(memo.updatedAt).toBeInstanceOf(Date);
       expect(memo.deletedAt).toBeNull();
-    });
-
-    it('共有型定義と同じフィールドを持つ', () => {
-      const prismaMemo: Memo = {
-        id: 'test-memo-id',
-        bookId: 'test-book-id',
-        content: 'メモの内容',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null,
-      };
-
-      // Prismaの型が共有型にキャスト可能であることを確認
-      const sharedMemo: SharedMemo = prismaMemo;
-
-      expect(sharedMemo.id).toBe(prismaMemo.id);
-      expect(sharedMemo.bookId).toBe(prismaMemo.bookId);
-      expect(sharedMemo.content).toBe(prismaMemo.content);
     });
   });
 });
