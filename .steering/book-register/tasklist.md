@@ -93,37 +93,37 @@
 - [x] features/books/services/bookService.ts 実装
 - [x] features/books/services/isbnService.ts 実装
 
-## Phase 6: Frontend - Hooks
+## Phase 6: Frontend - Hooks ✅
 
 ### テストケース: useBooks.test.ts
 
-- [ ] libraryIdを渡すと本一覧を取得する
-- [ ] 取得中は`isLoading`がtrueになる
-- [ ] 取得成功時に`data`に本一覧がセットされる
-- [ ] フィルタ条件を変更すると再取得する
+- [x] libraryIdを渡すと本一覧を取得する
+- [x] 取得中は`isLoading`がtrueになる
+- [x] 取得成功時に`data`に本一覧がセットされる
+- [x] フィルタ条件を変更すると再取得する
 
 ### テストケース: useCreateBook.test.ts
 
-- [ ] `createBook`関数を返す
-- [ ] `createBook`呼び出しでAPIを呼び出す
-- [ ] 成功時に作成された本を返す
-- [ ] `isLoading`が正しく更新される
-- [ ] エラー時に`error`がセットされる
-- [ ] 成功時にuseBooksのキャッシュをmutateする
+- [x] `createBook`関数を返す
+- [x] `createBook`呼び出しでAPIを呼び出す
+- [x] 成功時に作成された本を返す
+- [x] `isLoading`が正しく更新される
+- [x] エラー時に`error`がセットされる
+- [x] 成功時にuseBooksのキャッシュをmutateする
 
 ### テストケース: useIsbnSearch.test.ts
 
-- [ ] `search`関数を返す
-- [ ] `search`呼び出しでAPIを呼び出す
-- [ ] 成功時に書籍情報を返す
-- [ ] 見つからない場合はnullを返す
-- [ ] `isSearching`が正しく更新される
+- [x] `search`関数を返す
+- [x] `search`呼び出しでAPIを呼び出す
+- [x] 成功時に書籍情報を返す
+- [x] 見つからない場合はnullを返す
+- [x] `isSearching`が正しく更新される
 
 ### 実装
 
-- [ ] hooks/useBooks.ts 実装
-- [ ] hooks/useCreateBook.ts 実装
-- [ ] hooks/useIsbnSearch.ts 実装
+- [x] hooks/useBooks.ts 実装
+- [x] hooks/useCreateBook.ts 実装
+- [x] hooks/useIsbnSearch.ts 実装
 
 ## Phase 7: Frontend - Components
 
