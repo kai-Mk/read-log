@@ -18,21 +18,21 @@
 
 - [x] bookRepository.ts 実装（create, findById, findByLibraryId）
 
-## Phase 2: Backend - Book Service
+## Phase 2: Backend - Book Service ✅
 
 ### テストケース: bookService.test.ts
 
-- [ ] `createBook`: 本を作成できる
-- [ ] `createBook`: ライブラリが存在しない場合はNotFoundErrorを投げる
-- [ ] `getBook`: 本を取得できる
-- [ ] `getBook`: 存在しない場合はNotFoundErrorを投げる
-- [ ] `getBooks`: ライブラリの本一覧を取得できる
-- [ ] `getBooks`: ライブラリが存在しない場合はNotFoundErrorを投げる
-- [ ] `getBooks`: フィルタとsearchを適用できる
+- [x] `createBook`: 本を作成できる
+- [x] `createBook`: ライブラリが存在しない場合はNotFoundErrorを投げる
+- [x] `getBook`: 本を取得できる
+- [x] `getBook`: 存在しない場合はNotFoundErrorを投げる
+- [x] `getBooks`: ライブラリの本一覧を取得できる
+- [x] `getBooks`: ライブラリが存在しない場合はNotFoundErrorを投げる
+- [x] `getBooks`: フィルタとsearchを適用できる
 
 ### 実装
 
-- [ ] bookService.ts 実装
+- [x] bookService.ts 実装
 
 ## Phase 3: Backend - ISBN Service
 
