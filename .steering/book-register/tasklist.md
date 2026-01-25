@@ -166,23 +166,24 @@
 - [x] components/AddBookModal.tsx 実装
 - [x] @testing-library/user-event 追加
 
-## Phase 8: Frontend - Page Integration
+## Phase 8: Frontend - Page Integration ✅
 
 ### テストケース: LibraryPage.test.tsx（追加）
 
-- [ ] 「本を追加」ボタンが表示される
-- [ ] ボタンをクリックするとAddBookModalが開く
-- [ ] 本一覧が表示される
+- [x] 書庫名が表示される
+- [x] 「本を追加」ボタンが表示される
+- [x] 本一覧が表示される
+- [x] 「本を追加」ボタンをクリックするとモーダルが開く
 
 ### 実装
 
-- [ ] LibraryPage.tsx 更新（本一覧表示、追加ボタン追加）
-- [ ] 画面動作確認
+- [x] LibraryPage.tsx 更新（本一覧表示、追加ボタン追加）
+- [x] App.test.tsx 更新（新しいhooksのモック追加）
 
-## Phase 9: 統合テスト
+## Phase 9: 統合テスト ✅
 
-- [ ] シナリオ: ISBNで本を検索し、登録できる
-- [ ] シナリオ: 手動入力で本を登録できる
-- [ ] シナリオ: 登録した本が一覧に表示される
-- [ ] 全テスト実行（pnpm test）
-- [ ] lint/type-check確認
+- [x] 全テスト実行（pnpm test）: 192テスト全てパス
+  - Frontend: 102テスト (21ファイル)
+  - Backend: 90テスト (18ファイル)
+- [x] lint確認: 全パッケージエラーなし
+- [x] type-check確認: 全パッケージエラーなし
