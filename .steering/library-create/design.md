@@ -11,7 +11,8 @@
 
 ## 受け入れ条件
 
-- 「マイ書庫を作成」ボタンをクリックするとマイ書庫が作成される
+- 「マイ書庫を作成」ボタンをクリックすると名前入力モーダルが開く
+- 書庫の名前を入力して作成できる（1〜100文字）
 - マイ書庫には一意のIDが付与される（UUID）
 - 作成後、マイ書庫のURLが表示される
 - URLをブックマークすることで次回以降アクセスできる
@@ -30,13 +31,14 @@
 
 ### Frontend
 
-| ファイル                                        | 説明                   |
-| ----------------------------------------------- | ---------------------- |
-| src/features/library/services/libraryService.ts | API呼び出し            |
-| src/features/library/hooks/useLibrary.ts        | マイ書庫取得hook       |
-| src/features/library/hooks/useCreateLibrary.ts  | マイ書庫作成hook       |
-| src/pages/TopPage.tsx                           | トップページ（更新）   |
-| src/pages/LibraryPage.tsx                       | マイ書庫ページ（更新） |
+| ファイル                                               | 説明                   |
+| ------------------------------------------------------ | ---------------------- |
+| src/features/library/services/libraryService.ts        | API呼び出し            |
+| src/features/library/hooks/useLibrary.ts               | マイ書庫取得hook       |
+| src/features/library/hooks/useCreateLibrary.ts         | マイ書庫作成hook       |
+| src/features/library/components/CreateLibraryModal.tsx | 書庫作成モーダル       |
+| src/pages/TopPage.tsx                                  | トップページ（更新）   |
+| src/pages/LibraryPage.tsx                              | マイ書庫ページ（更新） |
 
 ## API仕様
 
@@ -48,7 +50,7 @@
 
 ```json
 {
-  "name": "マイ書庫"
+  "name": "技術書コレクション"
 }
 ```
 
@@ -116,8 +118,10 @@
 ```
 [TopPage]
     ↓ 「マイ書庫を作成」クリック
+[CreateLibraryModal 表示]
+    ↓ 書庫名を入力して作成
 [useCreateLibrary hook]
-    ↓ libraryService.createLibrary()
+    ↓ libraryService.createLibrary(name)
 [POST /api/libraries]
     ↓ libraryController.create()
 [libraryService.createLibrary()]
@@ -132,6 +136,5 @@
 ## 注意点
 
 - UUIDはバックエンドで生成（Prismaの@default(uuid())）
-- 名前のデフォルト値は「マイ書庫」
-- 名前は1〜100文字
+- 名前は必須、1〜100文字
 - 存在しないライブラリIDへのアクセスは404を返す
