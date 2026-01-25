@@ -53,35 +53,26 @@
 
 ---
 
-## Phase 3: zodスキーマの作成
+## Phase 3: zodスキーマの作成 ✅
 
 ### 3.1 schemas/library.ts
 
-- [ ] Red: createLibrarySchemaのテストを作成
-- [ ] Green: createLibrarySchemaを実装
-- [ ] Red: updateLibrarySchemaのテストを作成
-- [ ] Green: updateLibrarySchemaを実装
-- [ ] Refactor: 必要に応じてリファクタリング
+- [x] Red: createLibrarySchema, updateLibrarySchemaのテストを作成
+- [x] Green: createLibrarySchema, updateLibrarySchemaを実装
 
 ### 3.2 schemas/book.ts
 
-- [ ] Red: createBookSchemaのテストを作成
-- [ ] Green: createBookSchemaを実装
-- [ ] Red: updateBookSchemaのテストを作成
-- [ ] Green: updateBookSchemaを実装
-- [ ] Refactor: 必要に応じてリファクタリング
+- [x] Red: createBookSchema, updateBookSchemaのテストを作成
+- [x] Green: createBookSchema, updateBookSchemaを実装
 
 ### 3.3 schemas/memo.ts
 
-- [ ] Red: createMemoSchemaのテストを作成
-- [ ] Green: createMemoSchemaを実装
-- [ ] Red: updateMemoSchemaのテストを作成
-- [ ] Green: updateMemoSchemaを実装
-- [ ] Refactor: 必要に応じてリファクタリング
+- [x] Red: createMemoSchema, updateMemoSchemaのテストを作成
+- [x] Green: createMemoSchema, updateMemoSchemaを実装
 
 ### 3.4 schemas/index.ts
 
-- [ ] 全てのスキーマを再エクスポート
+- [x] 全てのスキーマを再エクスポート
 
 ---
 

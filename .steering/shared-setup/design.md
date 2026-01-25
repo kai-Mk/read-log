@@ -159,3 +159,63 @@ packages/shared/
 | BOOK_CATEGORY.NOVELが'novel'である       | `'novel'`                                |
 | BOOK_CATEGORY.ACADEMICが'academic'である | `'academic'`                             |
 | BOOK_CATEGORY.OTHERが'other'である       | `'other'`                                |
+
+### schemas/library.ts
+
+#### createLibrarySchema
+
+| テストケース                    | 種別   | 期待値   |
+| ------------------------------- | ------ | -------- |
+| 有効な入力でパスする            | 正常系 | パス     |
+| nameが空文字の場合エラー        | 異常系 | ZodError |
+| nameが100文字を超える場合エラー | 異常系 | ZodError |
+| nameがない場合エラー            | 異常系 | ZodError |
+
+#### updateLibrarySchema
+
+| テストケース                    | 種別   | 期待値   |
+| ------------------------------- | ------ | -------- |
+| 有効な入力でパスする            | 正常系 | パス     |
+| nameが空文字の場合エラー        | 異常系 | ZodError |
+| nameが100文字を超える場合エラー | 異常系 | ZodError |
+
+### schemas/book.ts
+
+#### createBookSchema
+
+| テストケース                       | 種別   | 期待値   |
+| ---------------------------------- | ------ | -------- |
+| 必須項目のみでパスする             | 正常系 | パス     |
+| 全項目入力でパスする               | 正常系 | パス     |
+| titleが空文字の場合エラー          | 異常系 | ZodError |
+| titleが200文字を超える場合エラー   | 異常系 | ZodError |
+| authorが100文字を超える場合エラー  | 異常系 | ZodError |
+| pageCountが0以下の場合エラー       | 異常系 | ZodError |
+| pageCountが99999を超える場合エラー | 異常系 | ZodError |
+| statusが不正な値の場合エラー       | 異常系 | ZodError |
+| categoryが不正な値の場合エラー     | 異常系 | ZodError |
+
+#### updateBookSchema
+
+| テストケース              | 種別   | 期待値   |
+| ------------------------- | ------ | -------- |
+| 有効な入力でパスする      | 正常系 | パス     |
+| titleが空文字の場合エラー | 異常系 | ZodError |
+
+### schemas/memo.ts
+
+#### createMemoSchema
+
+| テストケース                         | 種別   | 期待値   |
+| ------------------------------------ | ------ | -------- |
+| 有効な入力でパスする                 | 正常系 | パス     |
+| contentが空文字の場合エラー          | 異常系 | ZodError |
+| contentが10000文字を超える場合エラー | 異常系 | ZodError |
+
+#### updateMemoSchema
+
+| テストケース                         | 種別   | 期待値   |
+| ------------------------------------ | ------ | -------- |
+| 有効な入力でパスする                 | 正常系 | パス     |
+| contentが空文字の場合エラー          | 異常系 | ZodError |
+| contentが10000文字を超える場合エラー | 異常系 | ZodError |
