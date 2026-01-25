@@ -10,15 +10,13 @@
 
 ---
 
-## Phase 1: 定数の作成
+## Phase 1: 定数の作成 ✅
 
 ### 1.1 constants/index.ts
 
-- [ ] Red: BOOK_STATUS定数のテストを作成
-- [ ] Green: BOOK_STATUS定数を実装
-- [ ] Red: BOOK_CATEGORY定数のテストを作成
-- [ ] Green: BOOK_CATEGORY定数を実装
-- [ ] Refactor: 必要に応じてリファクタリング
+- [x] Red: BOOK_STATUS, BOOK_CATEGORY定数のテストを作成
+- [x] Green: BOOK_STATUS, BOOK_CATEGORY定数を実装
+- [x] Refactor: 不要なコメント削除、テスト名を日本語化
 
 ---
 

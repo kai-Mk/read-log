@@ -136,3 +136,26 @@ packages/shared/
 ## 依存関係
 
 - `zod`: バリデーションスキーマ
+
+## テストケース
+
+### constants/index.ts
+
+#### BOOK_STATUS
+
+| テストケース                             | 期待値                                |
+| ---------------------------------------- | ------------------------------------- |
+| BOOK_STATUSが3つの値を持つ               | `['unread', 'wishlist', 'completed']` |
+| BOOK_STATUS.UNREADが'unread'である       | `'unread'`                            |
+| BOOK_STATUS.WISHLISTが'wishlist'である   | `'wishlist'`                          |
+| BOOK_STATUS.COMPLETEDが'completed'である | `'completed'`                         |
+
+#### BOOK_CATEGORY
+
+| テストケース                             | 期待値                                   |
+| ---------------------------------------- | ---------------------------------------- |
+| BOOK_CATEGORYが4つの値を持つ             | `['tech', 'novel', 'academic', 'other']` |
+| BOOK_CATEGORY.TECHが'tech'である         | `'tech'`                                 |
+| BOOK_CATEGORY.NOVELが'novel'である       | `'novel'`                                |
+| BOOK_CATEGORY.ACADEMICが'academic'である | `'academic'`                             |
+| BOOK_CATEGORY.OTHERが'other'である       | `'other'`                                |
