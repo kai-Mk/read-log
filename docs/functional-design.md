@@ -275,7 +275,13 @@ type Memo = {
 
 **概要**: 新しいマイ書庫を作成する
 
-**リクエスト**: なし（ボディ不要）
+**リクエスト**:
+
+```typescript
+type CreateLibraryRequest = {
+  name: string;
+};
+```
 
 **レスポンス**:
 
@@ -283,6 +289,7 @@ type Memo = {
 // 成功時
 type CreateLibraryResponse = {
   id: string;
+  name: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -314,6 +321,7 @@ type ErrorResponse = {
 // 成功時
 type GetLibraryResponse = {
   id: string;
+  name: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -324,6 +332,39 @@ type GetLibraryResponse = {
 | コード | 説明                   |
 | ------ | ---------------------- |
 | 200    | 取得成功               |
+| 404    | マイ書庫が見つからない |
+| 500    | サーバーエラー         |
+
+### PUT /api/libraries/:libraryId
+
+**概要**: マイ書庫の情報を更新する
+
+**リクエスト**:
+
+```typescript
+type UpdateLibraryRequest = {
+  name: string;
+};
+```
+
+**レスポンス**:
+
+```typescript
+// 成功時
+type UpdateLibraryResponse = {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+```
+
+**ステータスコード**:
+
+| コード | 説明                   |
+| ------ | ---------------------- |
+| 200    | 更新成功               |
+| 400    | バリデーションエラー   |
 | 404    | マイ書庫が見つからない |
 | 500    | サーバーエラー         |
 
@@ -415,7 +456,7 @@ type GetBookResponse = Book & {
 | 404    | 本またはマイ書庫が見つからない |
 | 500    | サーバーエラー         |
 
-### PATCH /api/libraries/:libraryId/books/:bookId
+### PUT /api/libraries/:libraryId/books/:bookId
 
 **概要**: 本の情報を更新する
 
@@ -423,13 +464,13 @@ type GetBookResponse = Book & {
 
 ```typescript
 type UpdateBookRequest = {
-  title?: string;
+  title: string;
   author?: string;
   isbn?: string;
   coverImage?: string;
   pageCount?: number;
-  status?: 'unread' | 'wishlist' | 'completed';
-  category?: 'tech' | 'novel' | 'academic' | 'other';
+  status: 'unread' | 'wishlist' | 'completed';
+  category: 'tech' | 'novel' | 'academic' | 'other';
 };
 ```
 
@@ -500,7 +541,7 @@ type CreateMemoResponse = Memo;
 | 404    | 本またはマイ書庫が見つからない |
 | 500    | サーバーエラー         |
 
-### PATCH /api/libraries/:libraryId/books/:bookId/memos/:memoId
+### PUT /api/libraries/:libraryId/books/:bookId/memos/:memoId
 
 **概要**: メモを更新する
 
