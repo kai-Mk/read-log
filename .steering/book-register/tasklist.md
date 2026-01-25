@@ -34,18 +34,18 @@
 
 - [x] bookService.ts 実装
 
-## Phase 3: Backend - ISBN Service
+## Phase 3: Backend - ISBN Service ✅
 
 ### テストケース: isbnService.test.ts
 
-- [ ] `searchByIsbn`: Google Books APIから書籍情報を取得できる
-- [ ] `searchByIsbn`: 見つからない場合はnullを返す
-- [ ] `searchByIsbn`: APIエラー時はnullを返す
-- [ ] `mapCategory`: categoriesからcategoryをマッピングできる
+- [x] `searchByIsbn`: Google Books APIから書籍情報を取得できる
+- [x] `searchByIsbn`: 見つからない場合はnullを返す
+- [x] `searchByIsbn`: APIエラー時はnullを返す
+- [x] `mapCategory`: categoriesからcategoryをマッピングできる
 
 ### 実装
 
-- [ ] isbnService.ts 実装
+- [x] isbnService.ts 実装
 
 ## Phase 4: Backend - Controllers & Routes
 
