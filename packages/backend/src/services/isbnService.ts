@@ -1,6 +1,5 @@
 import type { BookCategory, IsbnSearchResult } from '@read-log/shared';
-
-const GOOGLE_BOOKS_API_URL = 'https://www.googleapis.com/books/v1/volumes';
+import { GOOGLE_BOOKS_API_URL } from '../constants';
 
 type GoogleBooksResponse = {
   totalItems: number;
