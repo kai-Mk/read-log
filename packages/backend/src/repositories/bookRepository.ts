@@ -66,24 +66,17 @@ export const bookRepository = {
   },
 
   async update(id: string, input: UpdateBookInput) {
-    try {
-      return await prisma.book.update({
-        where: { id, deletedAt: null },
-        data: {
-          title: input.title,
-          author: input.author,
-          isbn: input.isbn,
-          coverImage: input.coverImage,
-          pageCount: input.pageCount,
-          status: input.status,
-          category: input.category,
-        },
-      });
-    } catch (error) {
-      if ((error as { code?: string }).code === 'P2025') {
-        return null;
-      }
-      throw error;
-    }
+    return prisma.book.update({
+      where: { id, deletedAt: null },
+      data: {
+        title: input.title,
+        author: input.author,
+        isbn: input.isbn,
+        coverImage: input.coverImage,
+        pageCount: input.pageCount,
+        status: input.status,
+        category: input.category,
+      },
+    });
   },
 };

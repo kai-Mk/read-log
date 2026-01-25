@@ -265,19 +265,5 @@ describe('bookRepository', () => {
       });
       expect(result).toEqual(updatedBook);
     });
-
-    it('存在しない本の場合はnullを返す', async () => {
-      const prismaError = new Error('Record to update not found');
-      (prismaError as { code?: string }).code = 'P2025';
-      vi.mocked(prisma.book.update).mockRejectedValue(prismaError);
-
-      const result = await bookRepository.update('non-existent', {
-        title: 'テスト',
-        status: 'unread',
-        category: 'other',
-      });
-
-      expect(result).toBeNull();
-    });
   });
 });
