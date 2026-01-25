@@ -9,7 +9,7 @@ read-log は積読本・読みたい本・読了本を管理するWebアプリ�
 ## 技術スタック
 
 - **Frontend**: React 18 + Vite + TypeScript + Tailwind CSS + SWR
-- **Backend**: Hono + Prisma + Node.js 20
+- **Backend**: Hono + Prisma + Node.js 22
 - **Database**: PostgreSQL 16
 - **Testing**: Vitest + React Testing Library + MSW
 - **Package Manager**: pnpm (workspace)

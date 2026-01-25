@@ -148,7 +148,7 @@ jobs:
           version: 8
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm lint
@@ -162,7 +162,7 @@ jobs:
           version: 8
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm type-check
@@ -176,7 +176,7 @@ jobs:
           version: 8
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm test
