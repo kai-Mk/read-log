@@ -6,30 +6,30 @@ TDDサイクル（Red → Green → Refactor）に基づいてバックエンド
 
 ## タスク
 
-### Phase 1: Prisma スキーマ作成
+### Phase 1: Prisma スキーマ作成 ✅
 
 #### 1.1 Library モデル定義
 
-- [ ] **Red**: Library モデルの型定義テストを作成
-- [ ] **Green**: schema.prisma に Library モデルを追加
-- [ ] **Refactor**: 型定義の整合性確認
+- [x] **Red**: Library モデルの型定義テストを作成
+- [x] **Green**: schema.prisma に Library モデルを追加
+- [x] **Refactor**: 型定義の整合性確認
 
 #### 1.2 Book モデル定義
 
-- [ ] **Red**: Book モデルの型定義テストを作成
-- [ ] **Green**: schema.prisma に Book モデルを追加
-- [ ] **Refactor**: Library との関連付け確認
+- [x] **Red**: Book モデルの型定義テストを作成
+- [x] **Green**: schema.prisma に Book モデルを追加
+- [x] **Refactor**: Library との関連付け確認
 
 #### 1.3 Memo モデル定義
 
-- [ ] **Red**: Memo モデルの型定義テストを作成
-- [ ] **Green**: schema.prisma に Memo モデルを追加
-- [ ] **Refactor**: Book との関連付け確認
+- [x] **Red**: Memo モデルの型定義テストを作成
+- [x] **Green**: schema.prisma に Memo モデルを追加
+- [x] **Refactor**: Book との関連付け確認
 
 #### 1.4 マイグレーション実行
 
-- [ ] `npx prisma migrate dev --name init` で初期マイグレーション
-- [ ] Prisma Client 生成確認
+- [x] `npx prisma migrate dev --name init` で初期マイグレーション
+- [x] Prisma Client 生成確認
 
 ### Phase 2: ユーティリティ作成
 
@@ -108,8 +108,8 @@ TDDサイクル（Red → Green → Refactor）に基づいてバックエンド
 
 ## 完了条件
 
-- [ ] Prisma スキーマに Library, Book, Memo モデルが定義されている
-- [ ] 初期マイグレーションが実行され、テーブルが作成されている
+- [x] Prisma スキーマに Library, Book, Memo モデルが定義されている
+- [x] 初期マイグレーションが実行され、テーブルが作成されている
 - [ ] CORS ミドルウェアが動作している
 - [ ] エラーハンドリングミドルウェアが動作している
 - [ ] バリデーションミドルウェアが動作している
