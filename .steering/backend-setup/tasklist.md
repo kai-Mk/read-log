@@ -65,19 +65,19 @@ TDDサイクル（Red → Green → Refactor）に基づいてバックエンド
 - [x] **Green**: `middlewares/validator.ts` を作成
 - [x] **Refactor**: zodスキーマとの連携
 
-### Phase 4: アプリケーション設定
+### Phase 4: アプリケーション設定 ✅
 
 #### 4.1 Hono アプリケーション分離
 
-- [ ] **Red**: アプリケーション設定テストを作成
-- [ ] **Green**: `app.ts` を作成、`index.ts` からアプリ設定を分離
-- [ ] **Refactor**: ミドルウェア登録順序の整理
+- [x] **Red**: アプリケーション設定テストを作成
+- [x] **Green**: `app.ts` を作成、`index.ts` からアプリ設定を分離
+- [x] **Refactor**: ミドルウェア登録順序の整理
 
 #### 4.2 ルート集約
 
-- [ ] **Red**: ルート定義テストを作成
-- [ ] **Green**: `routes/index.ts` を作成
-- [ ] **Refactor**: ヘルスチェックエンドポイントの移動
+- [x] **Red**: ルート定義テストを作成
+- [x] **Green**: `routes/index.ts` を作成
+- [x] **Refactor**: ヘルスチェックエンドポイントの移動
 
 ### Phase 5: ディレクトリ構成整備
 
