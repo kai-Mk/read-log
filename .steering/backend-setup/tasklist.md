@@ -31,19 +31,19 @@ TDDサイクル（Red → Green → Refactor）に基づいてバックエンド
 - [x] `npx prisma migrate dev --name init` で初期マイグレーション
 - [x] Prisma Client 生成確認
 
-### Phase 2: ユーティリティ作成
+### Phase 2: ユーティリティ作成 ✅
 
 #### 2.1 Prisma Client シングルトン
 
-- [ ] **Red**: Prisma Client インスタンス取得テストを作成
-- [ ] **Green**: `utils/prisma.ts` を作成
-- [ ] **Refactor**: シングルトンパターンの確認
+- [x] **Red**: Prisma Client インスタンス取得テストを作成
+- [x] **Green**: `utils/prisma.ts` を作成
+- [x] **Refactor**: シングルトンパターンの確認
 
 #### 2.2 UUID生成ユーティリティ
 
-- [ ] **Red**: UUID形式の検証テストを作成
-- [ ] **Green**: `utils/uuid.ts` を作成
-- [ ] **Refactor**: 型定義の追加
+- [x] **Red**: UUID形式の検証テストを作成
+- [x] **Green**: `utils/uuid.ts` を作成
+- [x] **Refactor**: 型定義の追加
 
 ### Phase 3: ミドルウェア作成
 
