@@ -2,11 +2,11 @@ import useSWR from 'swr';
 import type { Library } from '@read-log/shared';
 import { libraryService } from '../services/libraryService';
 
-export interface UseLibraryResult {
+export type UseLibraryResult = {
   data: Library | undefined;
   isLoading: boolean;
   error: Error | undefined;
-}
+};
 
 export function useLibrary(libraryId: string | undefined): UseLibraryResult {
   const { data, error, isLoading } = useSWR<Library, Error>(
