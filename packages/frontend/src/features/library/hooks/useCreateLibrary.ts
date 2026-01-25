@@ -2,11 +2,11 @@ import { useState, useCallback } from 'react';
 import type { Library } from '@read-log/shared';
 import { libraryService } from '../services/libraryService';
 
-export interface UseCreateLibraryResult {
+export type UseCreateLibraryResult = {
   createLibrary: (name: string) => Promise<Library | null>;
   isLoading: boolean;
   error: Error | null;
-}
+};
 
 export function useCreateLibrary(): UseCreateLibraryResult {
   const [isLoading, setIsLoading] = useState(false);

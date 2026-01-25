@@ -3,11 +3,11 @@ import { useSWRConfig } from 'swr';
 import type { Book, CreateBookInput } from '@read-log/shared';
 import { bookService } from '../services/bookService';
 
-export interface UseCreateBookResult {
+export type UseCreateBookResult = {
   createBook: (input: CreateBookInput) => Promise<Book | null>;
   isLoading: boolean;
   error: Error | null;
-}
+};
 
 export function useCreateBook(libraryId: string): UseCreateBookResult {
   const [isLoading, setIsLoading] = useState(false);

@@ -2,12 +2,12 @@ import useSWR from 'swr';
 import type { Book } from '@read-log/shared';
 import { bookService, GetBooksFilter } from '../services/bookService';
 
-export interface UseBooksResult {
+export type UseBooksResult = {
   data: Book[] | undefined;
   isLoading: boolean;
   error: Error | undefined;
   mutate: () => void;
-}
+};
 
 export function useBooks(libraryId: string | undefined, filter?: GetBooksFilter): UseBooksResult {
   const key = libraryId

@@ -2,11 +2,11 @@ import { useState, useCallback } from 'react';
 import type { IsbnSearchResult } from '@read-log/shared';
 import { isbnService } from '../services/isbnService';
 
-export interface UseIsbnSearchResult {
+export type UseIsbnSearchResult = {
   search: (isbn: string) => Promise<IsbnSearchResult | null>;
   isSearching: boolean;
   error: Error | null;
-}
+};
 
 export function useIsbnSearch(): UseIsbnSearchResult {
   const [isSearching, setIsSearching] = useState(false);
