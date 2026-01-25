@@ -1,5 +1,5 @@
 import type { Context } from 'hono';
-import type { CreateBookInput, BookStatus, BookCategory } from '@read-log/shared';
+import type { CreateBookInput, UpdateBookInput, BookStatus, BookCategory } from '@read-log/shared';
 import { bookService } from '../services/bookService';
 
 export const bookController = {
@@ -29,5 +29,15 @@ export const bookController = {
       Object.keys(filter).length > 0 ? filter : undefined
     );
     return c.json({ books });
+  },
+
+  async update(c: Context) {
+    const { libraryId, bookId } = c.get('validatedParams') as {
+      libraryId: string;
+      bookId: string;
+    };
+    const body = c.get('validatedBody') as UpdateBookInput;
+    const book = await bookService.updateBook(libraryId, bookId, body);
+    return c.json(book);
   },
 };

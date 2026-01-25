@@ -5,17 +5,23 @@ import { bookController } from './bookController';
 import { bookService } from '../services/bookService';
 import { errorHandler, NotFoundError } from '../middlewares/errorHandler';
 import { validateBody, validateParams, validateQuery } from '../middlewares/validator';
-import { createBookSchema } from '@read-log/shared';
+import { createBookSchema, updateBookSchema } from '@read-log/shared';
 
 vi.mock('../services/bookService', () => ({
   bookService: {
     createBook: vi.fn(),
     getBooks: vi.fn(),
+    updateBook: vi.fn(),
   },
 }));
 
 const libraryIdSchema = z.object({
   libraryId: z.string().uuid(),
+});
+
+const bookIdSchema = z.object({
+  libraryId: z.string().uuid(),
+  bookId: z.string().uuid(),
 });
 
 const getBooksQuerySchema = z.object({
@@ -43,6 +49,12 @@ describe('bookController', () => {
       validateParams(libraryIdSchema),
       validateQuery(getBooksQuerySchema),
       bookController.list
+    );
+    app.put(
+      '/api/libraries/:libraryId/books/:bookId',
+      validateParams(bookIdSchema),
+      validateBody(updateBookSchema),
+      bookController.update
     );
   });
 
@@ -157,6 +169,81 @@ describe('bookController', () => {
       );
 
       const res = await app.request('/api/libraries/550e8400-e29b-41d4-a716-446655440000/books');
+
+      expect(res.status).toBe(404);
+      const body = (await res.json()) as { code: string };
+      expect(body.code).toBe('NOT_FOUND');
+    });
+  });
+
+  describe('PUT /api/libraries/:libraryId/books/:bookId', () => {
+    const updatedBook = {
+      ...mockBook,
+      title: '更新後のタイトル',
+      status: 'completed',
+    };
+
+    it('200を返し、本が更新される', async () => {
+      vi.mocked(bookService.updateBook).mockResolvedValue(updatedBook);
+
+      const res = await app.request(
+        '/api/libraries/550e8400-e29b-41d4-a716-446655440000/books/550e8400-e29b-41d4-a716-446655440001',
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: '更新後のタイトル',
+            status: 'completed',
+            category: 'tech',
+          }),
+        }
+      );
+
+      expect(res.status).toBe(200);
+      const body = (await res.json()) as { title: string; status: string };
+      expect(body.title).toBe('更新後のタイトル');
+      expect(body.status).toBe('completed');
+      expect(bookService.updateBook).toHaveBeenCalledWith(
+        '550e8400-e29b-41d4-a716-446655440000',
+        '550e8400-e29b-41d4-a716-446655440001',
+        expect.objectContaining({ title: '更新後のタイトル', status: 'completed' })
+      );
+    });
+
+    it('タイトルが空の場合は400を返す', async () => {
+      const res = await app.request(
+        '/api/libraries/550e8400-e29b-41d4-a716-446655440000/books/550e8400-e29b-41d4-a716-446655440001',
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: '',
+            status: 'unread',
+            category: 'tech',
+          }),
+        }
+      );
+
+      expect(res.status).toBe(400);
+      const body = (await res.json()) as { code: string };
+      expect(body.code).toBe('VALIDATION_ERROR');
+    });
+
+    it('本が存在しない場合は404を返す', async () => {
+      vi.mocked(bookService.updateBook).mockRejectedValue(new NotFoundError('本が見つかりません'));
+
+      const res = await app.request(
+        '/api/libraries/550e8400-e29b-41d4-a716-446655440000/books/550e8400-e29b-41d4-a716-446655440001',
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: 'テスト本',
+            status: 'unread',
+            category: 'tech',
+          }),
+        }
+      );
 
       expect(res.status).toBe(404);
       const body = (await res.json()) as { code: string };

@@ -116,4 +116,68 @@ describe('bookService', () => {
       await expect(bookService.getBooks('non-existent')).rejects.toThrow(FetchError);
     });
   });
+
+  describe('updateBook', () => {
+    const updatedBook = {
+      ...mockBook,
+      title: '更新後のタイトル',
+      status: 'completed',
+    };
+
+    it('PUT /api/libraries/:libraryId/books/:bookId を呼び出す', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve(updatedBook),
+      });
+
+      const input = {
+        title: '更新後のタイトル',
+        status: 'completed' as const,
+        category: 'tech' as const,
+      };
+
+      await bookService.updateBook('library-uuid', 'book-uuid', input);
+
+      expect(fetch).toHaveBeenCalledWith('/api/libraries/library-uuid/books/book-uuid', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(input),
+      });
+    });
+
+    it('更新された本を返す', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve(updatedBook),
+      });
+
+      const input = {
+        title: '更新後のタイトル',
+        status: 'completed' as const,
+        category: 'tech' as const,
+      };
+
+      const result = await bookService.updateBook('library-uuid', 'book-uuid', input);
+
+      expect(result).toEqual(updatedBook);
+    });
+
+    it('エラー時にFetchErrorを投げる', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: false,
+        status: 404,
+        json: () => Promise.resolve({ message: 'Not found' }),
+      });
+
+      const input = {
+        title: 'テスト',
+        status: 'unread' as const,
+        category: 'other' as const,
+      };
+
+      await expect(bookService.updateBook('library-uuid', 'non-existent', input)).rejects.toThrow(
+        FetchError
+      );
+    });
+  });
 });

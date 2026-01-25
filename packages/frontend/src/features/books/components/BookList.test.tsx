@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { BookList } from './BookList';
 import type { Book } from '@read-log/shared';
 
@@ -59,5 +59,15 @@ describe('BookList', () => {
     render(<BookList books={[]} error={error} />);
 
     expect(screen.getByText('読み込みに失敗しました')).toBeInTheDocument();
+  });
+
+  it('本をクリックするとonBookClickが呼ばれる', () => {
+    const onBookClick = vi.fn();
+    render(<BookList books={mockBooks} onBookClick={onBookClick} />);
+
+    const firstBook = screen.getAllByRole('button')[0];
+    fireEvent.click(firstBook);
+
+    expect(onBookClick).toHaveBeenCalledWith(mockBooks[0]);
   });
 });

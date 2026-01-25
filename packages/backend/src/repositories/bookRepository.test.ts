@@ -8,6 +8,7 @@ vi.mock('../utils/prisma', () => ({
       create: vi.fn(),
       findUnique: vi.fn(),
       findMany: vi.fn(),
+      update: vi.fn(),
     },
   },
 }));
@@ -224,6 +225,59 @@ describe('bookRepository', () => {
         orderBy: { createdAt: 'desc' },
       });
       expect(result).toHaveLength(1);
+    });
+  });
+
+  describe('update', () => {
+    it('本の情報を更新できる', async () => {
+      const updatedBook = {
+        id: 'book-uuid',
+        libraryId: 'library-uuid',
+        title: '更新後のタイトル',
+        author: '更新後の著者',
+        isbn: '9784873115658',
+        coverImage: 'https://example.com/cover.jpg',
+        pageCount: 300,
+        status: 'completed',
+        category: 'tech',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        deletedAt: null,
+      };
+
+      vi.mocked(prisma.book.update).mockResolvedValue(updatedBook);
+
+      const result = await bookRepository.update('book-uuid', {
+        title: '更新後のタイトル',
+        author: '更新後の著者',
+        status: 'completed',
+        category: 'tech',
+      });
+
+      expect(prisma.book.update).toHaveBeenCalledWith({
+        where: { id: 'book-uuid', deletedAt: null },
+        data: {
+          title: '更新後のタイトル',
+          author: '更新後の著者',
+          status: 'completed',
+          category: 'tech',
+        },
+      });
+      expect(result).toEqual(updatedBook);
+    });
+
+    it('存在しない本の場合はnullを返す', async () => {
+      const prismaError = new Error('Record to update not found');
+      (prismaError as { code?: string }).code = 'P2025';
+      vi.mocked(prisma.book.update).mockRejectedValue(prismaError);
+
+      const result = await bookRepository.update('non-existent', {
+        title: 'テスト',
+        status: 'unread',
+        category: 'other',
+      });
+
+      expect(result).toBeNull();
     });
   });
 });

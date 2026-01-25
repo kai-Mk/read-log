@@ -1,4 +1,10 @@
-import type { Book, CreateBookInput, BookStatus, BookCategory } from '@read-log/shared';
+import type {
+  Book,
+  CreateBookInput,
+  UpdateBookInput,
+  BookStatus,
+  BookCategory,
+} from '@read-log/shared';
 import { FetchError } from '../../../utils/fetcher';
 
 export type GetBooksFilter = {
@@ -47,5 +53,20 @@ export const bookService = {
 
     const data = (await response.json()) as { books: Book[] };
     return data.books;
+  },
+
+  async updateBook(libraryId: string, bookId: string, input: UpdateBookInput): Promise<Book> {
+    const response = await fetch(`/api/libraries/${libraryId}/books/${bookId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(input),
+    });
+
+    if (!response.ok) {
+      const info = await response.json().catch(() => null);
+      throw new FetchError('本の更新に失敗しました', response.status, info);
+    }
+
+    return response.json();
   },
 };
