@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import type { Book, BookStatus } from '@read-log/shared';
 import { Modal } from '../../../components/Modal';
 import { StatusDropdown } from './StatusDropdown';
@@ -26,9 +27,18 @@ export function BookDetailModal({
   libraryId,
 }: BookDetailModalProps) {
   const { updateBook, isLoading } = useUpdateBook(libraryId);
+  const [currentStatus, setCurrentStatus] = useState<BookStatus>(book.status);
+
+  // bookが変更されたらローカルステートを同期
+  useEffect(() => {
+    setCurrentStatus(book.status);
+  }, [book.status]);
 
   const handleStatusChange = async (newStatus: BookStatus) => {
-    if (newStatus === book.status) return;
+    if (newStatus === currentStatus) return;
+
+    // 楽観的更新: 即座にUIを更新
+    setCurrentStatus(newStatus);
 
     const result = await updateBook(book.id, {
       title: book.title,
@@ -42,6 +52,9 @@ export function BookDetailModal({
 
     if (result) {
       onSuccess();
+    } else {
+      // 失敗時は元に戻す
+      setCurrentStatus(book.status);
     }
   };
 
@@ -76,7 +89,7 @@ export function BookDetailModal({
             <label className="block text-sm font-medium text-gray-700">ステータス</label>
             <div className="mt-1">
               <StatusDropdown
-                value={book.status}
+                value={currentStatus}
                 onChange={handleStatusChange}
                 disabled={isLoading}
               />
