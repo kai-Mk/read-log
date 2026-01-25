@@ -14,19 +14,19 @@
 
 - [x] libraryRepository.ts 実装（create, findById, update）
 
-## Phase 2: Backend - Service
+## Phase 2: Backend - Service ✅
 
 ### テストケース: libraryService.test.ts
 
-- [ ] `createLibrary`: マイ書庫を作成できる
-- [ ] `getLibrary`: マイ書庫を取得できる
-- [ ] `getLibrary`: 存在しない場合はNotFoundErrorを投げる
-- [ ] `updateLibrary`: マイ書庫を更新できる
-- [ ] `updateLibrary`: 存在しない場合はNotFoundErrorを投げる
+- [x] `createLibrary`: マイ書庫を作成できる
+- [x] `getLibrary`: マイ書庫を取得できる
+- [x] `getLibrary`: 存在しない場合はNotFoundErrorを投げる
+- [x] `updateLibrary`: マイ書庫を更新できる
+- [x] `updateLibrary`: 存在しない場合はNotFoundErrorを投げる
 
 ### 実装
 
-- [ ] libraryService.ts 実装
+- [x] libraryService.ts 実装
 
 ## Phase 3: Backend - Controller & Routes
 
