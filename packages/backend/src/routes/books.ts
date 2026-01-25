@@ -1,7 +1,9 @@
 import { Hono } from 'hono';
 import {
   createBookSchema,
+  updateBookSchema,
   libraryIdWithBooksParamSchema,
+  bookIdParamSchema,
   getBooksQuerySchema,
 } from '@read-log/shared';
 import { bookController } from '../controllers/bookController';
@@ -21,4 +23,11 @@ booksRoutes.get(
   validateParams(libraryIdWithBooksParamSchema),
   validateQuery(getBooksQuerySchema),
   bookController.list
+);
+
+booksRoutes.put(
+  '/:bookId',
+  validateParams(bookIdParamSchema),
+  validateBody(updateBookSchema),
+  bookController.update
 );

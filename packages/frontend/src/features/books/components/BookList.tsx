@@ -5,6 +5,7 @@ type BookListProps = {
   books: Book[];
   isLoading?: boolean;
   error?: Error;
+  onBookClick?: (book: Book) => void;
 };
 
 function BookListSkeleton() {
@@ -17,7 +18,7 @@ function BookListSkeleton() {
   );
 }
 
-export function BookList({ books, isLoading, error }: BookListProps) {
+export function BookList({ books, isLoading, error, onBookClick }: BookListProps) {
   if (isLoading) {
     return <BookListSkeleton />;
   }
@@ -41,7 +42,11 @@ export function BookList({ books, isLoading, error }: BookListProps) {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {books.map((book) => (
-        <BookCard key={book.id} book={book} />
+        <BookCard
+          key={book.id}
+          book={book}
+          onClick={onBookClick ? () => onBookClick(book) : undefined}
+        />
       ))}
     </div>
   );

@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import type { Book } from '@read-log/shared';
 import { Loading } from '../components/Loading';
 import { useLibrary } from '../features/library/hooks/useLibrary';
 import { useBooks } from '../features/books/hooks/useBooks';
 import { BookList } from '../features/books/components/BookList';
 import { AddBookModal } from '../features/books/components/AddBookModal';
+import { BookDetailModal } from '../features/books/components/BookDetailModal';
 
 export function LibraryPage() {
   const { libraryId } = useParams<{ libraryId: string }>();
   const { data: library, isLoading: isLibraryLoading, error: libraryError } = useLibrary(libraryId);
   const { data: books, isLoading: isBooksLoading, error: booksError, mutate } = useBooks(libraryId);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
   if (isLibraryLoading) {
     return (
@@ -42,27 +45,54 @@ export function LibraryPage() {
     mutate();
   };
 
+  const handleBookClick = (book: Book) => {
+    setSelectedBook(book);
+  };
+
+  const handleDetailClose = () => {
+    setSelectedBook(null);
+  };
+
+  const handleDetailSuccess = () => {
+    mutate();
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8 flex items-center justify-between">
           <h1 className="text-3xl font-bold text-gray-900">{library.name}</h1>
           <button
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsAddModalOpen(true)}
             className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
           >
             本を追加
           </button>
         </div>
 
-        <BookList books={books ?? []} isLoading={isBooksLoading} error={booksError} />
+        <BookList
+          books={books ?? []}
+          isLoading={isBooksLoading}
+          error={booksError}
+          onBookClick={handleBookClick}
+        />
 
         <AddBookModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
+          isOpen={isAddModalOpen}
+          onClose={() => setIsAddModalOpen(false)}
           onSuccess={handleAddBookSuccess}
           libraryId={libraryId!}
         />
+
+        {selectedBook && (
+          <BookDetailModal
+            isOpen={true}
+            onClose={handleDetailClose}
+            onSuccess={handleDetailSuccess}
+            book={selectedBook}
+            libraryId={libraryId!}
+          />
+        )}
       </main>
     </div>
   );

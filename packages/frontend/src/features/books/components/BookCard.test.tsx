@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { BookCard } from './BookCard';
 import type { Book } from '@read-log/shared';
 
@@ -63,5 +63,21 @@ describe('BookCard', () => {
     render(<BookCard book={completedBook} />);
 
     expect(screen.getByText('読了')).toBeInTheDocument();
+  });
+
+  it('カードをクリックするとonClickが呼ばれる', () => {
+    const onClick = vi.fn();
+    render(<BookCard book={mockBook} onClick={onClick} />);
+
+    const card = screen.getByRole('button');
+    fireEvent.click(card);
+
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('onClickが指定されていない場合はボタンではなくdivとして表示される', () => {
+    render(<BookCard book={mockBook} />);
+
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 });

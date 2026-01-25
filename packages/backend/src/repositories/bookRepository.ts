@@ -1,4 +1,4 @@
-import type { CreateBookInput, BookStatus, BookCategory } from '@read-log/shared';
+import type { CreateBookInput, UpdateBookInput, BookStatus, BookCategory } from '@read-log/shared';
 import { prisma } from '../utils/prisma';
 
 export type FindBooksFilter = {
@@ -62,6 +62,21 @@ export const bookRepository = {
     return prisma.book.findMany({
       where,
       orderBy: { createdAt: 'desc' },
+    });
+  },
+
+  async update(id: string, input: UpdateBookInput) {
+    return prisma.book.update({
+      where: { id, deletedAt: null },
+      data: {
+        title: input.title,
+        author: input.author,
+        isbn: input.isbn,
+        coverImage: input.coverImage,
+        pageCount: input.pageCount,
+        status: input.status,
+        category: input.category,
+      },
     });
   },
 };

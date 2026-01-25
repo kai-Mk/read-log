@@ -64,6 +64,14 @@ vi.mock('../features/books/hooks/useIsbnSearch', () => ({
   }),
 }));
 
+vi.mock('../features/books/hooks/useUpdateBook', () => ({
+  useUpdateBook: () => ({
+    updateBook: vi.fn().mockResolvedValue({ id: 'book-1' }),
+    isLoading: false,
+    error: null,
+  }),
+}));
+
 const renderWithRouter = (libraryId: string = 'library-uuid') => {
   return render(
     <MemoryRouter initialEntries={[`/libraries/${libraryId}`]}>
@@ -104,5 +112,19 @@ describe('LibraryPage', () => {
     await user.click(screen.getByRole('button', { name: '本を追加' }));
 
     expect(screen.getByText('本を登録')).toBeInTheDocument();
+  });
+
+  it('本カードをクリックすると詳細モーダルが開く', async () => {
+    const user = userEvent.setup();
+    renderWithRouter();
+
+    // 本カードをクリック（ボタンとして表示されている）
+    const bookCards = screen.getAllByRole('button');
+    const bookCard = bookCards.find((button) => button.textContent?.includes('リーダブルコード'));
+    if (bookCard) {
+      await user.click(bookCard);
+    }
+
+    expect(screen.getByText('本の詳細')).toBeInTheDocument();
   });
 });

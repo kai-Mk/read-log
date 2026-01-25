@@ -9,6 +9,7 @@ vi.mock('../repositories/bookRepository', () => ({
     create: vi.fn(),
     findById: vi.fn(),
     findByLibraryId: vi.fn(),
+    update: vi.fn(),
   },
 }));
 
@@ -141,6 +142,93 @@ describe('bookService', () => {
 
       expect(bookRepository.findByLibraryId).toHaveBeenCalledWith('library-uuid', filter);
       expect(result).toEqual(mockBooks);
+    });
+  });
+
+  describe('updateBook', () => {
+    const updatedBook = {
+      ...mockBook,
+      title: '更新後のタイトル',
+      status: 'completed',
+    };
+
+    it('本を更新できる', async () => {
+      vi.mocked(libraryRepository.findById).mockResolvedValue(mockLibrary);
+      vi.mocked(bookRepository.findById).mockResolvedValue(mockBook);
+      vi.mocked(bookRepository.update).mockResolvedValue(updatedBook);
+
+      const input = {
+        title: '更新後のタイトル',
+        status: 'completed' as const,
+        category: 'tech' as const,
+      };
+
+      const result = await bookService.updateBook('library-uuid', 'book-uuid', input);
+
+      expect(libraryRepository.findById).toHaveBeenCalledWith('library-uuid');
+      expect(bookRepository.findById).toHaveBeenCalledWith('book-uuid');
+      expect(bookRepository.update).toHaveBeenCalledWith('book-uuid', input);
+      expect(result).toEqual(updatedBook);
+    });
+
+    it('ライブラリが存在しない場合はNotFoundErrorを投げる', async () => {
+      vi.mocked(libraryRepository.findById).mockResolvedValue(null);
+
+      const input = {
+        title: 'テスト',
+        status: 'unread' as const,
+        category: 'other' as const,
+      };
+
+      await expect(bookService.updateBook('non-existent', 'book-uuid', input)).rejects.toThrow(
+        NotFoundError
+      );
+      await expect(bookService.updateBook('non-existent', 'book-uuid', input)).rejects.toThrow(
+        'マイ書庫が見つかりません'
+      );
+      expect(bookRepository.update).not.toHaveBeenCalled();
+    });
+
+    it('本が存在しない場合はNotFoundErrorを投げる', async () => {
+      vi.mocked(libraryRepository.findById).mockResolvedValue(mockLibrary);
+      vi.mocked(bookRepository.findById).mockResolvedValue(null);
+
+      const input = {
+        title: 'テスト',
+        status: 'unread' as const,
+        category: 'other' as const,
+      };
+
+      await expect(bookService.updateBook('library-uuid', 'non-existent', input)).rejects.toThrow(
+        NotFoundError
+      );
+      await expect(bookService.updateBook('library-uuid', 'non-existent', input)).rejects.toThrow(
+        '本が見つかりません'
+      );
+      expect(bookRepository.update).not.toHaveBeenCalled();
+    });
+
+    it('他のライブラリの本は更新できない', async () => {
+      const otherLibraryBook = {
+        ...mockBook,
+        libraryId: 'other-library-uuid',
+      };
+      vi.mocked(libraryRepository.findById).mockResolvedValue(mockLibrary);
+      vi.mocked(bookRepository.findById).mockResolvedValue(otherLibraryBook);
+
+      const input = {
+        title: 'テスト',
+        status: 'unread' as const,
+        category: 'other' as const,
+      };
+
+      await expect(bookService.updateBook('library-uuid', 'book-uuid', input)).rejects.toThrow(
+        NotFoundError
+      );
+      await expect(bookService.updateBook('library-uuid', 'book-uuid', input)).rejects.toThrow(
+        '本が見つかりません'
+      );
+      expect(bookRepository.update).not.toHaveBeenCalled();
     });
   });
 });
