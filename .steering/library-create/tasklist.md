@@ -30,11 +30,9 @@
 - [ ] hooks/useLibrary.ts テスト作成
 - [ ] hooks/useLibrary.ts 実装
 
-## Phase 6: Frontend - Components & Pages
+## Phase 6: Frontend - Pages
 
-- [ ] CreateLibraryModal.tsx テスト作成
-- [ ] CreateLibraryModal.tsx 実装（名前入力モーダル）
-- [ ] TopPage.tsx 更新（モーダル連携）
+- [ ] TopPage.tsx 更新（名前入力欄追加、API連携）
 - [ ] LibraryPage.tsx 更新（マイ書庫情報表示）
 - [ ] 画面動作確認
 

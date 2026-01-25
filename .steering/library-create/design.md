@@ -11,10 +11,10 @@
 
 ## 受け入れ条件
 
-- 「マイ書庫を作成」ボタンをクリックすると名前入力モーダルが開く
+- 書庫名の入力欄と「マイ書庫を作成」ボタンがある
 - 書庫の名前を入力して作成できる（1〜100文字）
 - マイ書庫には一意のIDが付与される（UUID）
-- 作成後、マイ書庫のURLが表示される
+- 作成後、マイ書庫ページへ遷移する
 - URLをブックマークすることで次回以降アクセスできる
 - 既存のマイ書庫IDを入力してアクセスできる
 
@@ -31,14 +31,13 @@
 
 ### Frontend
 
-| ファイル                                               | 説明                   |
-| ------------------------------------------------------ | ---------------------- |
-| src/features/library/services/libraryService.ts        | API呼び出し            |
-| src/features/library/hooks/useLibrary.ts               | マイ書庫取得hook       |
-| src/features/library/hooks/useCreateLibrary.ts         | マイ書庫作成hook       |
-| src/features/library/components/CreateLibraryModal.tsx | 書庫作成モーダル       |
-| src/pages/TopPage.tsx                                  | トップページ（更新）   |
-| src/pages/LibraryPage.tsx                              | マイ書庫ページ（更新） |
+| ファイル                                        | 説明                   |
+| ----------------------------------------------- | ---------------------- |
+| src/features/library/services/libraryService.ts | API呼び出し            |
+| src/features/library/hooks/useLibrary.ts        | マイ書庫取得hook       |
+| src/features/library/hooks/useCreateLibrary.ts  | マイ書庫作成hook       |
+| src/pages/TopPage.tsx                           | トップページ（更新）   |
+| src/pages/LibraryPage.tsx                       | マイ書庫ページ（更新） |
 
 ## API仕様
 
@@ -117,9 +116,7 @@
 
 ```
 [TopPage]
-    ↓ 「マイ書庫を作成」クリック
-[CreateLibraryModal 表示]
-    ↓ 書庫名を入力して作成
+    ↓ 書庫名を入力して「マイ書庫を作成」クリック
 [useCreateLibrary hook]
     ↓ libraryService.createLibrary(name)
 [POST /api/libraries]
