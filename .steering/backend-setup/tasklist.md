@@ -45,25 +45,25 @@ TDDサイクル（Red → Green → Refactor）に基づいてバックエンド
 - [x] **Green**: `utils/uuid.ts` を作成
 - [x] **Refactor**: 型定義の追加
 
-### Phase 3: ミドルウェア作成
+### Phase 3: ミドルウェア作成 ✅
 
 #### 3.1 CORS ミドルウェア
 
-- [ ] **Red**: CORS ヘッダー付与テストを作成
-- [ ] **Green**: `middlewares/cors.ts` を作成
-- [ ] **Refactor**: 環境変数からオリジン取得
+- [x] **Red**: CORS ヘッダー付与テストを作成
+- [x] **Green**: `middlewares/cors.ts` を作成
+- [x] **Refactor**: 環境変数からオリジン取得
 
 #### 3.2 エラーハンドリングミドルウェア
 
-- [ ] **Red**: エラーレスポンス形式テストを作成
-- [ ] **Green**: `middlewares/errorHandler.ts` を作成
-- [ ] **Refactor**: エラータイプ別の処理
+- [x] **Red**: エラーレスポンス形式テストを作成
+- [x] **Green**: `middlewares/errorHandler.ts` を作成
+- [x] **Refactor**: エラータイプ別の処理
 
 #### 3.3 バリデーションミドルウェア
 
-- [ ] **Red**: バリデーションエラーテストを作成
-- [ ] **Green**: `middlewares/validator.ts` を作成
-- [ ] **Refactor**: zodスキーマとの連携
+- [x] **Red**: バリデーションエラーテストを作成
+- [x] **Green**: `middlewares/validator.ts` を作成
+- [x] **Refactor**: zodスキーマとの連携
 
 ### Phase 4: アプリケーション設定
 
@@ -110,8 +110,8 @@ TDDサイクル（Red → Green → Refactor）に基づいてバックエンド
 
 - [x] Prisma スキーマに Library, Book, Memo モデルが定義されている
 - [x] 初期マイグレーションが実行され、テーブルが作成されている
-- [ ] CORS ミドルウェアが動作している
-- [ ] エラーハンドリングミドルウェアが動作している
-- [ ] バリデーションミドルウェアが動作している
+- [x] CORS ミドルウェアが動作している
+- [x] エラーハンドリングミドルウェアが動作している
+- [x] バリデーションミドルウェアが動作している
 - [ ] ディレクトリ構成が整備されている
 - [ ] すべてのテストがパスしている
