@@ -72,7 +72,7 @@ type [EntityName] = {
 
 ```typescript
 type[RequestType] = {
-    // ...
+  // ...
 };
 ```
 
@@ -81,14 +81,14 @@ type[RequestType] = {
 ```typescript
 // 成功時
 type[ResponseType] = {
-    // ...
+  // ...
 };
 
 // エラー時
 type ErrorResponse = {
-    code: string;
-    error: string;
-    message: string;
+  code: string;
+  error: string;
+  message: string;
 };
 ```
 
@@ -123,7 +123,7 @@ flowchart TD
 
 ```typescript
 type[ResponseType] = {
-    // ...
+  // ...
 };
 ```
 

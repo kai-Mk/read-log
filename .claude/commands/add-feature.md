@@ -9,6 +9,7 @@
 ```
 
 例:
+
 ```
 /add-feature マイ書庫の作成 #9
 /add-feature 本の登録機能 #10
@@ -33,11 +34,13 @@
 3. ブランチを作成して切り替える: `git checkout -b {ブランチ名}`
 
 **ブランチ名の例:**
+
 - `#9 マイ書庫の作成` → `9-library-create`
 - `#10 本の登録機能` → `10-book-register`
 - `#15 メモの追加` → `15-memo-add`
 
 **推論ルール:**
+
 - 日本語の動詞を英語の動詞に変換（作成→create、登録→register、追加→add、編集→edit、削除→delete）
 - 対象のリソースを英語に変換（マイ書庫→library、本→book、メモ→memo）
 - ケバブケースで結合（例: library-create, book-register）
@@ -53,7 +56,7 @@
 ### ステップ4: 設計書の作成
 
 1. **steeringスキル**をロードする
-2. `.steering/{issue番号}-{機能名}/design.md`を作成する
+2. `.steering/{機能名}/design.md`を作成する
 3. 機能の詳細設計を記述する:
    - 機能概要
    - 実装するコンポーネント/モジュール
@@ -62,7 +65,7 @@
 
 ### ステップ5: タスクリストの作成
 
-1. `.steering/{issue番号}-{機能名}/tasklist.md`を作成する
+1. `.steering/{機能名}/tasklist.md`を作成する
 2. TDDサイクルに基づいたタスクを記述する:
    - Red: テスト作成
    - Green: 実装
@@ -88,8 +91,8 @@
 
 - [ ] issueの内容を確認した
 - [ ] ブランチ `{issue番号}-{機能名}` を作成し、切り替えた
-- [ ] `.steering/{issue番号}-{機能名}/design.md` - 機能設計書を作成した
-- [ ] `.steering/{issue番号}-{機能名}/tasklist.md` - タスクリストを作成した
+- [ ] `.steering/{機能名}/design.md` - 機能設計書を作成した
+- [ ] `.steering/{機能名}/tasklist.md` - タスクリストを作成した
 
 ## 完了メッセージ
 
@@ -97,7 +100,7 @@
 
 - Issue: #{issue番号}
 - ブランチ: {issue番号}-{機能名}
-- 設計書: .steering/{issue番号}-{機能名}/design.md
-- タスクリスト: .steering/{issue番号}-{機能名}/tasklist.md
+- 設計書: .steering/{機能名}/design.md
+- タスクリスト: .steering/{機能名}/tasklist.md
 
 タスクリストに従って実装を開始してください。
