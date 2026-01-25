@@ -28,24 +28,24 @@
 
 - [x] libraryService.ts 実装
 
-## Phase 3: Backend - Controller & Routes
+## Phase 3: Backend - Controller & Routes ✅
 
 ### テストケース: libraryController.test.ts
 
-- [ ] `POST /api/libraries`: 201を返し、マイ書庫が作成される
-- [ ] `POST /api/libraries`: 名前が空の場合は400を返す
-- [ ] `POST /api/libraries`: 名前が100文字を超える場合は400を返す
-- [ ] `GET /api/libraries/:id`: 200を返し、マイ書庫情報を返す
-- [ ] `GET /api/libraries/:id`: 存在しない場合は404を返す
-- [ ] `PUT /api/libraries/:id`: 200を返し、マイ書庫が更新される
-- [ ] `PUT /api/libraries/:id`: 存在しない場合は404を返す
+- [x] `POST /api/libraries`: 201を返し、マイ書庫が作成される
+- [x] `POST /api/libraries`: 名前が空の場合は400を返す
+- [x] `POST /api/libraries`: 名前が100文字を超える場合は400を返す
+- [x] `GET /api/libraries/:id`: 200を返し、マイ書庫情報を返す
+- [x] `GET /api/libraries/:id`: 存在しない場合は404を返す
+- [x] `PUT /api/libraries/:id`: 200を返し、マイ書庫が更新される
+- [x] `PUT /api/libraries/:id`: 存在しない場合は404を返す
 
 ### 実装
 
-- [ ] libraryController.ts 実装
-- [ ] routes/libraries.ts 実装
-- [ ] routes/index.ts にルート追加
-- [ ] API動作確認（curl/httpie）
+- [x] libraryController.ts 実装
+- [x] routes/libraries.ts 実装
+- [x] routes/index.ts にルート追加
+- [x] API動作確認（curl/httpie）
 
 ## Phase 4: Frontend - Service
 
