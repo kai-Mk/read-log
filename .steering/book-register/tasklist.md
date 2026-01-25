@@ -1,22 +1,22 @@
 # F-02: 本の登録 タスクリスト
 
-## Phase 1: Backend - Book Repository
+## Phase 1: Backend - Book Repository ✅
 
 ### テストケース: bookRepository.test.ts
 
-- [ ] `create`: 本を作成できる
-- [ ] `create`: libraryIdが存在しない場合はエラーを投げる
-- [ ] `findById`: IDで本を取得できる
-- [ ] `findById`: 存在しないIDの場合はnullを返す
-- [ ] `findById`: 削除済み（deletedAt != null）の場合はnullを返す
-- [ ] `findByLibraryId`: ライブラリIDで本一覧を取得できる
-- [ ] `findByLibraryId`: statusでフィルタできる
-- [ ] `findByLibraryId`: categoryでフィルタできる
-- [ ] `findByLibraryId`: タイトル・著者で検索できる
+- [x] `create`: 本を作成できる
+- [x] `create`: libraryIdが存在しない場合はエラーを投げる
+- [x] `findById`: IDで本を取得できる
+- [x] `findById`: 存在しないIDの場合はnullを返す
+- [x] `findById`: 削除済み（deletedAt != null）の場合はnullを返す
+- [x] `findByLibraryId`: ライブラリIDで本一覧を取得できる
+- [x] `findByLibraryId`: statusでフィルタできる
+- [x] `findByLibraryId`: categoryでフィルタできる
+- [x] `findByLibraryId`: タイトル・著者で検索できる
 
 ### 実装
 
-- [ ] bookRepository.ts 実装（create, findById, findByLibraryId）
+- [x] bookRepository.ts 実装（create, findById, findByLibraryId）
 
 ## Phase 2: Backend - Book Service
 
