@@ -53,7 +53,7 @@
 ### ステップ4: 設計書の作成
 
 1. **steeringスキル**をロードする
-2. `.steering/{issue番号}-{機能名}/design.md`を作成する
+2. `.steering/{機能名}/design.md`を作成する
 3. 機能の詳細設計を記述する:
    - 機能概要
    - 実装するコンポーネント/モジュール
@@ -62,7 +62,7 @@
 
 ### ステップ5: タスクリストの作成
 
-1. `.steering/{issue番号}-{機能名}/tasklist.md`を作成する
+1. `.steering/{機能名}/tasklist.md`を作成する
 2. TDDサイクルに基づいたタスクを記述する:
    - Red: テスト作成
    - Green: 実装
@@ -88,8 +88,8 @@
 
 - [ ] issueの内容を確認した
 - [ ] ブランチ `{issue番号}-{機能名}` を作成し、切り替えた
-- [ ] `.steering/{issue番号}-{機能名}/design.md` - 機能設計書を作成した
-- [ ] `.steering/{issue番号}-{機能名}/tasklist.md` - タスクリストを作成した
+- [ ] `.steering/{機能名}/design.md` - 機能設計書を作成した
+- [ ] `.steering/{機能名}/tasklist.md` - タスクリストを作成した
 
 ## 完了メッセージ
 
@@ -97,7 +97,7 @@
 
 - Issue: #{issue番号}
 - ブランチ: {issue番号}-{機能名}
-- 設計書: .steering/{issue番号}-{機能名}/design.md
-- タスクリスト: .steering/{issue番号}-{機能名}/tasklist.md
+- 設計書: .steering/{機能名}/design.md
+- タスクリスト: .steering/{機能名}/tasklist.md
 
 タスクリストに従って実装を開始してください。
