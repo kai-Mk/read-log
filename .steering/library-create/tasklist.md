@@ -1,18 +1,18 @@
 # F-01: マイ書庫の作成 タスクリスト
 
-## Phase 1: Backend - Repository
+## Phase 1: Backend - Repository ✅
 
 ### テストケース: libraryRepository.test.ts
 
-- [ ] `create`: マイ書庫を作成できる
-- [ ] `findById`: IDでマイ書庫を取得できる
-- [ ] `findById`: 存在しないIDの場合はnullを返す
-- [ ] `findById`: 削除済み（deletedAt != null）の場合はnullを返す
-- [ ] `update`: マイ書庫の名前を更新できる
+- [x] `create`: マイ書庫を作成できる
+- [x] `findById`: IDでマイ書庫を取得できる
+- [x] `findById`: 存在しないIDの場合はnullを返す
+- [x] `findById`: 削除済み（deletedAt != null）の場合はnullを返す
+- [x] `update`: マイ書庫の名前を更新できる
 
 ### 実装
 
-- [ ] libraryRepository.ts 実装（create, findById, update）
+- [x] libraryRepository.ts 実装（create, findById, update）
 
 ## Phase 2: Backend - Service
 
