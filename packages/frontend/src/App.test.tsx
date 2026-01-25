@@ -25,6 +25,31 @@ vi.mock('./features/library/hooks/useCreateLibrary', () => ({
   })),
 }));
 
+vi.mock('./features/books/hooks/useBooks', () => ({
+  useBooks: vi.fn(() => ({
+    data: [],
+    isLoading: false,
+    error: undefined,
+    mutate: vi.fn(),
+  })),
+}));
+
+vi.mock('./features/books/hooks/useCreateBook', () => ({
+  useCreateBook: vi.fn(() => ({
+    createBook: vi.fn(),
+    isLoading: false,
+    error: null,
+  })),
+}));
+
+vi.mock('./features/books/hooks/useIsbnSearch', () => ({
+  useIsbnSearch: vi.fn(() => ({
+    search: vi.fn(),
+    isSearching: false,
+    error: null,
+  })),
+}));
+
 describe('App', () => {
   it('トップページを表示する', () => {
     render(
@@ -43,6 +68,6 @@ describe('App', () => {
       </MemoryRouter>
     );
     expect(screen.getByText('テスト書庫')).toBeInTheDocument();
-    expect(screen.getByText('ID: test-id')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '本を追加' })).toBeInTheDocument();
   });
 });
