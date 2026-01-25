@@ -2,14 +2,29 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
+import { useCreateLibrary } from '../features/library/hooks/useCreateLibrary';
 
 export function TopPage() {
   const navigate = useNavigate();
+  const [libraryName, setLibraryName] = useState('');
   const [libraryId, setLibraryId] = useState('');
+  const [nameError, setNameError] = useState('');
+  const { createLibrary, isLoading, error } = useCreateLibrary();
 
-  const handleCreateLibrary = () => {
-    // TODO: API呼び出しでマイ書庫を作成
-    navigate('/library/new-library-id');
+  const handleCreateLibrary = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setNameError('');
+
+    const trimmedName = libraryName.trim();
+    if (!trimmedName) {
+      setNameError('書庫名を入力してください');
+      return;
+    }
+
+    const library = await createLibrary(trimmedName);
+    if (library) {
+      navigate(`/library/${library.id}`);
+    }
   };
 
   const handleGoToLibrary = (e: React.FormEvent) => {
@@ -29,7 +44,20 @@ export function TopPage() {
           <div className="bg-white rounded-lg shadow-md p-8 mb-8">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">マイ書庫を作成</h2>
             <p className="text-gray-600 mb-6">新しいマイ書庫を作成して、本の管理を始めましょう</p>
-            <Button onClick={handleCreateLibrary}>マイ書庫を作成</Button>
+            <form onSubmit={handleCreateLibrary} className="space-y-4">
+              <Input
+                type="text"
+                placeholder="書庫名を入力（例：技術書コレクション）"
+                value={libraryName}
+                onChange={(e) => setLibraryName(e.target.value)}
+                error={nameError}
+                maxLength={100}
+              />
+              {error && <p className="text-sm text-red-600">{error.message}</p>}
+              <Button type="submit" isLoading={isLoading}>
+                マイ書庫を作成
+              </Button>
+            </form>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-8">

@@ -1,7 +1,29 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { App } from './App';
+
+vi.mock('./features/library/hooks/useLibrary', () => ({
+  useLibrary: vi.fn(() => ({
+    data: {
+      id: 'test-id',
+      name: 'テスト書庫',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      deletedAt: null,
+    },
+    isLoading: false,
+    error: undefined,
+  })),
+}));
+
+vi.mock('./features/library/hooks/useCreateLibrary', () => ({
+  useCreateLibrary: vi.fn(() => ({
+    createLibrary: vi.fn(),
+    isLoading: false,
+    error: null,
+  })),
+}));
 
 describe('App', () => {
   it('トップページを表示する', () => {
@@ -20,7 +42,7 @@ describe('App', () => {
         <App />
       </MemoryRouter>
     );
-    expect(screen.getByText('マイ書庫')).toBeInTheDocument();
-    expect(screen.getByText('Library ID: test-id')).toBeInTheDocument();
+    expect(screen.getByText('テスト書庫')).toBeInTheDocument();
+    expect(screen.getByText('ID: test-id')).toBeInTheDocument();
   });
 });
