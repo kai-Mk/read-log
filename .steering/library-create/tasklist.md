@@ -61,27 +61,27 @@
 
 - [x] features/library/services/libraryService.ts 実装
 
-## Phase 5: Frontend - Hooks
+## Phase 5: Frontend - Hooks ✅
 
 ### テストケース: useCreateLibrary.test.ts
 
-- [ ] `createLibrary`関数を返す
-- [ ] `createLibrary`呼び出しでAPIを呼び出す
-- [ ] 成功時に作成されたマイ書庫を返す
-- [ ] `isLoading`が正しく更新される
-- [ ] エラー時に`error`がセットされる
+- [x] `createLibrary`関数を返す
+- [x] `createLibrary`呼び出しでAPIを呼び出す
+- [x] 成功時に作成されたマイ書庫を返す
+- [x] `isLoading`が正しく更新される
+- [x] エラー時に`error`がセットされる
 
 ### テストケース: useLibrary.test.ts
 
-- [ ] libraryIdを渡すとマイ書庫を取得する
-- [ ] 取得中は`isLoading`がtrueになる
-- [ ] 取得成功時に`data`にマイ書庫情報がセットされる
-- [ ] 404の場合は`error`がセットされる
+- [x] libraryIdを渡すとマイ書庫を取得する
+- [x] 取得中は`isLoading`がtrueになる
+- [x] 取得成功時に`data`にマイ書庫情報がセットされる
+- [x] 404の場合は`error`がセットされる
 
 ### 実装
 
-- [ ] hooks/useCreateLibrary.ts 実装
-- [ ] hooks/useLibrary.ts 実装
+- [x] hooks/useCreateLibrary.ts 実装
+- [x] hooks/useLibrary.ts 実装
 
 ## Phase 6: Frontend - Pages
 
