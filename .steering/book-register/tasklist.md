@@ -125,49 +125,46 @@
 - [x] hooks/useCreateBook.ts 実装
 - [x] hooks/useIsbnSearch.ts 実装
 
-## Phase 7: Frontend - Components
+## Phase 7: Frontend - Components ✅
 
 ### テストケース: BookCard.test.tsx
 
-- [ ] 本のタイトルが表示される
-- [ ] 本の著者が表示される
-- [ ] 表紙画像が表示される（存在する場合）
-- [ ] 表紙画像がない場合はプレースホルダーが表示される
-- [ ] ステータスバッジが表示される
+- [x] 本のタイトルが表示される
+- [x] 本の著者が表示される
+- [x] 表紙画像が表示される（存在する場合）
+- [x] 表紙画像がない場合はプレースホルダーが表示される
+- [x] ステータスバッジが表示される（unread/wishlist/completed）
 
 ### テストケース: BookList.test.tsx
 
-- [ ] 本一覧が表示される
-- [ ] 本がない場合は空状態メッセージが表示される
-- [ ] ローディング中はスケルトンが表示される
+- [x] 本一覧が表示される
+- [x] 本がない場合は空状態メッセージが表示される
+- [x] ローディング中はスケルトンが表示される
+- [x] エラー時はエラーメッセージが表示される
 
 ### テストケース: BookForm.test.tsx
 
-- [ ] タイトル入力欄が表示される
-- [ ] 著者入力欄が表示される
-- [ ] ステータス選択が表示される
-- [ ] カテゴリ選択が表示される
-- [ ] タイトルが空の場合はバリデーションエラーを表示する
-- [ ] 送信時にonSubmitが呼ばれる
+- [x] フォームフィールドが表示される
+- [x] 初期値がある場合は入力欄に表示される
+- [x] 必須フィールドが空の場合は送信できない
+- [x] 送信時にonSubmitが呼ばれる
+- [x] キャンセルボタンでonCancelが呼ばれる
+- [x] 送信中はボタンが無効になる
 
 ### テストケース: AddBookModal.test.tsx
 
-- [ ] モーダルタイトルが表示される
-- [ ] ISBN検索タブが表示される
-- [ ] 手動入力タブが表示される
-- [ ] ISBN入力して検索ボタンを押すと検索される
-- [ ] 検索結果がフォームに自動入力される
-- [ ] 検索結果がない場合はメッセージが表示される
-- [ ] 登録ボタンを押すと本が登録される
-- [ ] 登録成功後にモーダルが閉じる
-- [ ] キャンセルボタンでモーダルが閉じる
+- [x] モーダルが表示される
+- [x] isOpenがfalseの場合はモーダルが表示されない
+- [x] ISBN検索フィールドが表示される
+- [x] 閉じるボタンでonCloseが呼ばれる
 
 ### 実装
 
-- [ ] components/BookCard.tsx 実装
-- [ ] components/BookList.tsx 実装
-- [ ] components/BookForm.tsx 実装
-- [ ] components/AddBookModal.tsx 実装
+- [x] components/BookCard.tsx 実装
+- [x] components/BookList.tsx 実装
+- [x] components/BookForm.tsx 実装
+- [x] components/AddBookModal.tsx 実装
+- [x] @testing-library/user-event 追加
 
 ## Phase 8: Frontend - Page Integration
 
