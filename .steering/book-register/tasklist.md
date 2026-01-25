@@ -47,29 +47,29 @@
 
 - [x] isbnService.ts 実装
 
-## Phase 4: Backend - Controllers & Routes
+## Phase 4: Backend - Controllers & Routes ✅
 
 ### テストケース: bookController.test.ts
 
-- [ ] `POST /api/libraries/:libraryId/books`: 201を返し、本が作成される
-- [ ] `POST /api/libraries/:libraryId/books`: タイトルが空の場合は400を返す
-- [ ] `POST /api/libraries/:libraryId/books`: ライブラリが存在しない場合は404を返す
-- [ ] `GET /api/libraries/:libraryId/books`: 200を返し、本一覧を返す
-- [ ] `GET /api/libraries/:libraryId/books`: statusでフィルタできる
-- [ ] `GET /api/libraries/:libraryId/books`: ライブラリが存在しない場合は404を返す
+- [x] `POST /api/libraries/:libraryId/books`: 201を返し、本が作成される
+- [x] `POST /api/libraries/:libraryId/books`: タイトルが空の場合は400を返す
+- [x] `POST /api/libraries/:libraryId/books`: ライブラリが存在しない場合は404を返す
+- [x] `GET /api/libraries/:libraryId/books`: 200を返し、本一覧を返す
+- [x] `GET /api/libraries/:libraryId/books`: statusでフィルタできる
+- [x] `GET /api/libraries/:libraryId/books`: ライブラリが存在しない場合は404を返す
 
 ### テストケース: isbnController.test.ts
 
-- [ ] `GET /api/isbn/:isbn`: 200を返し、書籍情報を返す
-- [ ] `GET /api/isbn/:isbn`: 見つからない場合は404を返す
+- [x] `GET /api/isbn/:isbn`: 200を返し、書籍情報を返す
+- [x] `GET /api/isbn/:isbn`: 見つからない場合は404を返す
 
 ### 実装
 
-- [ ] bookController.ts 実装
-- [ ] isbnController.ts 実装
-- [ ] routes/books.ts 実装
-- [ ] routes/isbn.ts 実装
-- [ ] routes/index.ts にルート追加
+- [x] bookController.ts 実装
+- [x] isbnController.ts 実装
+- [x] routes/books.ts 実装
+- [x] routes/isbn.ts 実装
+- [x] routes/index.ts にルート追加
 - [ ] API動作確認（curl/httpie）
 
 ## Phase 5: Frontend - Services
