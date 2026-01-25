@@ -20,36 +20,36 @@
 
 ---
 
-## Phase 2: 型定義の作成
+## Phase 2: 型定義の作成 ✅
 
 ### 2.1 types/library.ts
 
-- [ ] Library型を定義
-- [ ] CreateLibraryRequest型を定義
-- [ ] UpdateLibraryRequest型を定義
+- [x] Library型を定義
+- [x] CreateLibraryRequest型を定義
+- [x] UpdateLibraryRequest型を定義
 
 ### 2.2 types/book.ts
 
-- [ ] BookStatus型を定義
-- [ ] BookCategory型を定義
-- [ ] Book型を定義
-- [ ] CreateBookRequest型を定義
-- [ ] UpdateBookRequest型を定義
+- [x] BookStatus型を定義
+- [x] BookCategory型を定義
+- [x] Book型を定義
+- [x] CreateBookRequest型を定義
+- [x] UpdateBookRequest型を定義
 
 ### 2.3 types/memo.ts
 
-- [ ] Memo型を定義
-- [ ] CreateMemoRequest型を定義
-- [ ] UpdateMemoRequest型を定義
+- [x] Memo型を定義
+- [x] CreateMemoRequest型を定義
+- [x] UpdateMemoRequest型を定義
 
 ### 2.4 types/api.ts
 
-- [ ] ErrorResponse型を定義
-- [ ] APIレスポンス型を定義
+- [x] ErrorResponse型を定義
+- [x] APIレスポンス型を定義（SuccessResponse, DeleteResponse）
 
 ### 2.5 types/index.ts
 
-- [ ] 全ての型を再エクスポート
+- [x] 全ての型を再エクスポート
 
 ---
 
