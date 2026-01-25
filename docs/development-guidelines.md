@@ -109,7 +109,7 @@
   ```typescript
   describe('BookService', () => {
     describe('getBooks', () => {
-      it('should return books for the given library', async () => {
+      it('指定したライブラリの本を返す', async () => {
         // Arrange: テストデータの準備
         const libraryId = 'test-library-id';
 
@@ -123,9 +123,9 @@
   });
   ```
 
-- **命名規則**: `should [期待する動作] when [条件]`
-  - `should return empty array when no books exist`
-  - `should throw error when library not found`
+- **命名規則**: 日本語で期待する動作を記述
+  - `本が存在しない場合は空配列を返す`
+  - `ライブラリが見つからない場合はエラーを投げる`
 
 ## 3. CI/CD
 
