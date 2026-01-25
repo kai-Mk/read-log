@@ -76,27 +76,27 @@
 
 ---
 
-## Phase 4: エントリポイントの整理
+## Phase 4: エントリポイントの整理 ✅
 
 ### 4.1 src/index.ts
 
-- [ ] types, schemas, constantsを再エクスポート
-- [ ] 既存の空ファイルを削除
+- [x] types, schemas, constantsを再エクスポート
+- [x] 既存のダミーテストを削除
 
 ---
 
-## Phase 5: 動作確認
+## Phase 5: 動作確認 ✅
 
-- [ ] `pnpm lint` が成功する
-- [ ] `pnpm type-check` が成功する
-- [ ] `pnpm test` が成功する
-- [ ] frontend, backendからimportできることを確認
+- [x] `pnpm lint` が成功する
+- [x] `pnpm type-check` が成功する
+- [x] `pnpm test` が成功する（33テスト）
+- [x] frontend, backendからimportできることを確認
 
 ---
 
 ## 完了条件
 
-- [ ] すべてのタスクが完了している
-- [ ] types/, schemas/, constants/が設計通りに作成されている
-- [ ] zodスキーマのテストがパスしている
-- [ ] frontend, backendから`@read-log/shared`として参照できる
+- [x] すべてのタスクが完了している
+- [x] types/, schemas/, constants/が設計通りに作成されている
+- [x] zodスキーマのテストがパスしている
+- [x] frontend, backendから`@read-log/shared`として参照できる
