@@ -59,7 +59,7 @@ describe('libraryController', () => {
       });
 
       expect(res.status).toBe(201);
-      const body = await res.json();
+      const body = (await res.json()) as { name: string };
       expect(body.name).toBe('技術書コレクション');
       expect(libraryService.createLibrary).toHaveBeenCalledWith({ name: '技術書コレクション' });
     });
@@ -105,7 +105,7 @@ describe('libraryController', () => {
       const res = await app.request('/api/libraries/550e8400-e29b-41d4-a716-446655440000');
 
       expect(res.status).toBe(200);
-      const body = await res.json();
+      const body = (await res.json()) as { name: string };
       expect(body.name).toBe('技術書コレクション');
     });
 
@@ -141,7 +141,7 @@ describe('libraryController', () => {
       });
 
       expect(res.status).toBe(200);
-      const body = await res.json();
+      const body = (await res.json()) as { name: string };
       expect(body.name).toBe('新しい名前');
     });
 
