@@ -44,6 +44,7 @@
 2. `docs/functional-design.md`を読み、該当する機能の詳細仕様を確認する
 3. `docs/architecture-design.md`を読み、技術的な制約を確認する
 4. `docs/repository-structure.md`を読み、ファイル配置のルールを確認する
+5. `docs/development-guidelines.md`を読み、コーディング規約とテスト方針を確認する
 
 ### ステップ3: 設計書の作成
 
