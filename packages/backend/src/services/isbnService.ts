@@ -1,4 +1,4 @@
-import type { BookCategory } from '@read-log/shared';
+import type { BookCategory, IsbnSearchResult } from '@read-log/shared';
 
 const GOOGLE_BOOKS_API_URL = 'https://www.googleapis.com/books/v1/volumes';
 
@@ -15,14 +15,6 @@ type GoogleBooksResponse = {
       categories?: string[];
     };
   }[];
-};
-
-export type IsbnSearchResult = {
-  title: string;
-  author: string | null;
-  coverImage: string | null;
-  pageCount: number | null;
-  category: BookCategory;
 };
 
 // カテゴリマッピング用の定義
