@@ -1,9 +1,5 @@
-import type { Library } from '@read-log/shared';
+import type { Library, CreateLibraryInput } from '@read-log/shared';
 import { fetcher, FetchError } from '../../../utils/fetcher';
-
-export type CreateLibraryInput = {
-  name: string;
-};
 
 export const libraryService = {
   async createLibrary(input: CreateLibraryInput): Promise<Library> {

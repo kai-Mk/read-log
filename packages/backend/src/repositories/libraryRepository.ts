@@ -1,12 +1,5 @@
+import type { CreateLibraryInput, UpdateLibraryInput } from '@read-log/shared';
 import { prisma } from '../utils/prisma';
-
-export type CreateLibraryInput = {
-  name: string;
-};
-
-export type UpdateLibraryInput = {
-  name: string;
-};
 
 export const libraryRepository = {
   async create(input: CreateLibraryInput) {

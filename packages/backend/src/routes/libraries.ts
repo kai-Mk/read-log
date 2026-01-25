@@ -1,15 +1,8 @@
 import { Hono } from 'hono';
 import { z } from 'zod';
+import { createLibrarySchema, updateLibrarySchema } from '@read-log/shared';
 import { libraryController } from '../controllers/libraryController';
 import { validateBody, validateParams } from '../middlewares/validator';
-
-const createLibrarySchema = z.object({
-  name: z.string().min(1).max(100),
-});
-
-const updateLibrarySchema = z.object({
-  name: z.string().min(1).max(100),
-});
 
 const libraryIdSchema = z.object({
   id: z.string().uuid(),

@@ -1,13 +1,6 @@
+import type { CreateLibraryInput, UpdateLibraryInput } from '@read-log/shared';
 import { libraryRepository } from '../repositories/libraryRepository';
 import { NotFoundError } from '../middlewares/errorHandler';
-
-export type CreateLibraryInput = {
-  name: string;
-};
-
-export type UpdateLibraryInput = {
-  name: string;
-};
 
 export const libraryService = {
   async createLibrary(input: CreateLibraryInput) {
