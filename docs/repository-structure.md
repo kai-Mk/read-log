@@ -92,7 +92,7 @@
 | `features/library/components/` | マイ書庫に関するUIコンポーネント | LibraryView.tsx, CreateLibraryButton.tsx |
 | `features/library/hooks/` | マイ書庫のデータ取得・操作hooks | useLibrary.ts, useCreateLibrary.ts |
 | `features/library/services/` | マイ書庫のAPI呼び出し | libraryService.ts |
-| `features/books/components/` | 本の管理に関するUIコンポーネント | BookList.tsx, BookCard.tsx, BookForm.tsx, UnreadView.tsx, WishlistView.tsx, CompletedView.tsx |
+| `features/books/components/` | 本の管理に関するUIコンポーネント | BookList.tsx, BookCard.tsx, BookForm.tsx, AddBookModal.tsx, BookDetailModal.tsx, EditBookModal.tsx, UnreadView.tsx, WishlistView.tsx, CompletedView.tsx |
 | `features/books/hooks/` | 本のデータ取得・操作hooks | useBooks.ts, useBook.ts, useCreateBook.ts, useUpdateBook.ts, useDeleteBook.ts, useIsbnSearch.ts |
 | `features/books/services/` | 本のAPI呼び出し | bookService.ts, isbnService.ts |
 | `features/memos/components/` | メモに関するUIコンポーネント | MemoList.tsx, MemoForm.tsx, MemoItem.tsx |
@@ -100,7 +100,7 @@
 | `features/memos/services/` | メモのAPI呼び出し | memoService.ts |
 | `components/` | 複数機能で使用する共通コンポーネント | Button.tsx, Input.tsx, Modal.tsx, Loading.tsx |
 | `hooks/` | 複数機能で使用する共通hooks | useLocalStorage.ts, useCopyToClipboard.ts |
-| `pages/` | ルートに対応するページコンポーネント | TopPage.tsx, LibraryPage.tsx, AddBookPage.tsx, BookDetailPage.tsx, EditBookPage.tsx |
+| `pages/` | ルートに対応するページコンポーネント | TopPage.tsx, LibraryPage.tsx |
 | `types/` | フロントエンド固有の型定義 | router.types.ts |
 | `utils/` | 汎用ユーティリティ関数 | fetcher.ts, formatDate.ts |
 
@@ -133,14 +133,14 @@ flowchart LR
     subgraph Pages["pages/"]
         TopPage
         LibraryPage
-        AddBookPage
-        BookDetailPage
     end
 
     subgraph Features["features/"]
         subgraph Components["components/"]
             BookList
             BookCard
+            AddBookModal
+            BookDetailModal
             MemoList
         end
         subgraph Hooks["hooks/"]
@@ -224,6 +224,7 @@ flowchart LR
 | スキーマ | camelCase (モデル名) | `book.ts`, `memo.ts` |
 | 定数 | camelCase | `bookStatus.ts`, `bookCategory.ts` |
 | ページ | PascalCase + Page | `TopPage.tsx`, `LibraryPage.tsx` |
+| モーダル | PascalCase + Modal | `AddBookModal.tsx`, `BookDetailModal.tsx` |
 
 ## 5. モジュール間の依存関係
 
