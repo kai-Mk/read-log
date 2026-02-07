@@ -77,6 +77,32 @@ export function BookDetailModal({
     onSuccess();
   };
 
+  // 編集モーダルが開いている場合は詳細モーダルを非表示にする
+  if (isEditModalOpen) {
+    return (
+      <EditBookModal
+        isOpen={true}
+        onClose={() => setIsEditModalOpen(false)}
+        onSuccess={handleEditSuccess}
+        book={book}
+        libraryId={libraryId}
+      />
+    );
+  }
+
+  // 削除確認ダイアログが開いている場合は詳細モーダルを非表示にする
+  if (isDeleteDialogOpen) {
+    return (
+      <DeleteConfirmDialog
+        isOpen={true}
+        onCancel={() => setIsDeleteDialogOpen(false)}
+        onConfirm={handleDelete}
+        bookTitle={book.title}
+        isLoading={isDeleting}
+      />
+    );
+  }
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="本の詳細" size="lg">
       <div className="flex gap-6">
@@ -129,29 +155,7 @@ export function BookDetailModal({
         >
           編集
         </button>
-        <button
-          onClick={onClose}
-          className="rounded-md bg-gray-100 px-4 py-2 text-gray-700 hover:bg-gray-200"
-        >
-          閉じる
-        </button>
       </div>
-
-      <EditBookModal
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-        onSuccess={handleEditSuccess}
-        book={book}
-        libraryId={libraryId}
-      />
-
-      <DeleteConfirmDialog
-        isOpen={isDeleteDialogOpen}
-        onCancel={() => setIsDeleteDialogOpen(false)}
-        onConfirm={handleDelete}
-        bookTitle={book.title}
-        isLoading={isDeleting}
-      />
     </Modal>
   );
 }

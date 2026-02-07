@@ -109,7 +109,7 @@ describe('BookDetailModal', () => {
     });
   });
 
-  it('閉じるボタンをクリックするとonCloseが呼ばれる', () => {
+  it('ヘッダーの閉じるボタンをクリックするとonCloseが呼ばれる', () => {
     const onClose = vi.fn();
 
     render(
@@ -123,12 +123,9 @@ describe('BookDetailModal', () => {
       { wrapper }
     );
 
-    // フッターの閉じるボタンをクリック（テキストが「閉じる」のボタン）
-    const closeButtons = screen.getAllByRole('button', { name: '閉じる' });
-    const footerCloseButton = closeButtons.find((btn) => btn.textContent === '閉じる');
-    if (footerCloseButton) {
-      fireEvent.click(footerCloseButton);
-    }
+    // ヘッダーの閉じるボタン（Xアイコン）をクリック
+    const closeButton = screen.getByRole('button', { name: '閉じる' });
+    fireEvent.click(closeButton);
 
     expect(onClose).toHaveBeenCalled();
   });
