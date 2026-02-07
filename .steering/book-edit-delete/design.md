@@ -23,14 +23,16 @@
 
 ### Frontend
 
-| ファイルパス                                                              | 種類           | 責務                                 |
-| ------------------------------------------------------------------------- | -------------- | ------------------------------------ |
-| `packages/frontend/src/features/books/services/bookService.ts`            | Service        | deleteBook メソッドを追加            |
-| `packages/frontend/src/features/books/hooks/useDeleteBook.ts`             | Hook           | 本の削除処理とキャッシュ更新         |
-| `packages/frontend/src/features/books/components/EditBookModal.tsx`       | コンポーネント | 本の編集モーダル                     |
-| `packages/frontend/src/features/books/components/EditBookForm.tsx`        | コンポーネント | 編集用フォーム（既存BookFormを拡張） |
-| `packages/frontend/src/features/books/components/DeleteConfirmDialog.tsx` | コンポーネント | 削除確認ダイアログ                   |
-| `packages/frontend/src/features/books/components/BookDetailModal.tsx`     | コンポーネント | 編集・削除ボタンを追加               |
+| ファイルパス                                                              | 種類           | 責務                                     |
+| ------------------------------------------------------------------------- | -------------- | ---------------------------------------- |
+| `packages/frontend/src/features/books/services/bookService.ts`            | Service        | deleteBook メソッドを追加                |
+| `packages/frontend/src/features/books/hooks/useDeleteBook.ts`             | Hook           | 本の削除処理とキャッシュ更新             |
+| `packages/frontend/src/features/books/hooks/useBooks.ts`                  | Hook           | mutate の戻り値の型を修正                |
+| `packages/frontend/src/features/books/components/EditBookModal.tsx`       | コンポーネント | 本の編集モーダル                         |
+| `packages/frontend/src/features/books/components/EditBookForm.tsx`        | コンポーネント | 編集用フォーム（既存BookFormを拡張）     |
+| `packages/frontend/src/features/books/components/DeleteConfirmDialog.tsx` | コンポーネント | 削除確認ダイアログ                       |
+| `packages/frontend/src/features/books/components/BookDetailModal.tsx`     | コンポーネント | 編集・削除ボタンを追加、モーダル切り替え |
+| `packages/frontend/src/pages/LibraryPage.tsx`                             | ページ         | 編集後に selectedBook を最新データに更新 |
 
 ## 4. データフロー
 
@@ -159,14 +161,15 @@ type DeleteBookResponse = {
 ### DeleteConfirmDialog
 
 - BookDetailModalから「削除」ボタンで開く
-- 確認メッセージ: 「この本を削除しますか？」
+- 確認メッセージ: 「{本のタイトル}を削除しますか？」
 - ボタン: 「キャンセル」「削除する」
 - 削除後は自動的に詳細モーダルも閉じる
 
 ### BookDetailModal の変更
 
 - フッターに「編集」「削除」ボタンを追加
-- 「閉じる」ボタンは右端に配置
+- 「閉じる」ボタンは削除（ヘッダーのXボタンで閉じる）
+- 編集・削除ボタンをクリックすると詳細モーダルは非表示になり、編集モーダルまたは削除確認ダイアログのみが表示される（モーダルの重ね表示を避ける）
 
 ## 8. 注意点
 
