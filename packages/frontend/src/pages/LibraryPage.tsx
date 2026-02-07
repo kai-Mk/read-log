@@ -53,8 +53,14 @@ export function LibraryPage() {
     setSelectedBook(null);
   };
 
-  const handleDetailSuccess = () => {
-    mutate();
+  const handleDetailSuccess = async () => {
+    const updatedBooks = await mutate();
+    if (updatedBooks && selectedBook) {
+      const updatedBook = updatedBooks.find((b) => b.id === selectedBook.id);
+      if (updatedBook) {
+        setSelectedBook(updatedBook);
+      }
+    }
   };
 
   return (
