@@ -9,9 +9,9 @@
 ## 進捗サマリー
 
 - 全タスク数: 24
-- 完了: 0
+- 完了: 24
 - 進行中: 0
-- 未着手: 24
+- 未着手: 0
 
 ---
 
@@ -19,34 +19,34 @@
 
 ### 1.1 Repository
 
-- [ ] **Red**: bookRepository.softDelete のテストを作成
+- [x] **Red**: bookRepository.softDelete のテストを作成
   - 本を削除すると deletedAt が設定される
   - 存在しない本を削除するとエラーが発生する
-- [ ] **Green**: bookRepository.softDelete を実装
-- [ ] **Refactor**: Repository のリファクタリング
+- [x] **Green**: bookRepository.softDelete を実装
+- [x] **Refactor**: Repository のリファクタリング
 
 ### 1.2 Service
 
-- [ ] **Red**: bookService.deleteBook のテストを作成
+- [x] **Red**: bookService.deleteBook のテストを作成
   - 本を削除できる
   - 存在しない本を削除するとエラーが発生する
   - 異なるライブラリの本を削除するとエラーが発生する
-- [ ] **Green**: bookService.deleteBook を実装
-- [ ] **Refactor**: Service のリファクタリング
+- [x] **Green**: bookService.deleteBook を実装
+- [x] **Refactor**: Service のリファクタリング
 
 ### 1.3 Controller
 
-- [ ] **Red**: bookController.delete のテストを作成
+- [x] **Red**: bookController.delete のテストを作成
   - 本を削除すると 200 と success: true が返る
   - 存在しない本を削除すると 404 が返る
-- [ ] **Green**: bookController.delete を実装
-- [ ] **Refactor**: Controller のリファクタリング
+- [x] **Green**: bookController.delete を実装
+- [x] **Refactor**: Controller のリファクタリング
 
 ### 1.4 Route
 
-- [ ] **Red**: DELETE /api/libraries/:libraryId/books/:bookId のE2Eテストを作成
-- [ ] **Green**: ルーティングを実装
-- [ ] **Refactor**: ルーティングのリファクタリング
+- [x] **Red**: DELETE /api/libraries/:libraryId/books/:bookId のE2Eテストを作成
+- [x] **Green**: ルーティングを実装
+- [x] **Refactor**: ルーティングのリファクタリング
 
 ---
 
@@ -54,29 +54,29 @@
 
 ### 2.1 Service
 
-- [ ] **Red**: bookService.deleteBook のテストを作成（MSWでモック）
+- [x] **Red**: bookService.deleteBook のテストを作成（MSWでモック）
   - 本を削除できる
   - エラー時に FetchError が投げられる
-- [ ] **Green**: bookService.deleteBook を実装
-- [ ] **Refactor**: Service のリファクタリング
+- [x] **Green**: bookService.deleteBook を実装
+- [x] **Refactor**: Service のリファクタリング
 
 ### 2.2 Hook
 
-- [ ] **Red**: useDeleteBook のテストを作成
+- [x] **Red**: useDeleteBook のテストを作成
   - deleteBook を呼び出すと本が削除される
   - 成功時にキャッシュが更新される
   - エラー時に error が設定される
-- [ ] **Green**: useDeleteBook を実装
-- [ ] **Refactor**: Hook のリファクタリング
+- [x] **Green**: useDeleteBook を実装
+- [x] **Refactor**: Hook のリファクタリング
 
 ### 2.3 DeleteConfirmDialog コンポーネント
 
-- [ ] **Red**: DeleteConfirmDialog のテストを作成
+- [x] **Red**: DeleteConfirmDialog のテストを作成
   - 確認メッセージが表示される
   - 「キャンセル」をクリックすると onCancel が呼ばれる
   - 「削除する」をクリックすると onConfirm が呼ばれる
-- [ ] **Green**: DeleteConfirmDialog を実装
-- [ ] **Refactor**: コンポーネントのリファクタリング
+- [x] **Green**: DeleteConfirmDialog を実装
+- [x] **Refactor**: コンポーネントのリファクタリング
 
 ---
 
@@ -84,22 +84,22 @@
 
 ### 3.1 EditBookForm コンポーネント
 
-- [ ] **Red**: EditBookForm のテストを作成
+- [x] **Red**: EditBookForm のテストを作成
   - 初期値が表示される
   - タイトル、著者、表紙画像URL、ページ数、カテゴリを編集できる
   - 送信時に onSubmit が呼ばれる
   - キャンセル時に onCancel が呼ばれる
-- [ ] **Green**: EditBookForm を実装
-- [ ] **Refactor**: コンポーネントのリファクタリング
+- [x] **Green**: EditBookForm を実装
+- [x] **Refactor**: コンポーネントのリファクタリング
 
 ### 3.2 EditBookModal コンポーネント
 
-- [ ] **Red**: EditBookModal のテストを作成
+- [x] **Red**: EditBookModal のテストを作成
   - モーダルが表示される
   - 保存成功時に onSuccess が呼ばれる
   - キャンセル時に onClose が呼ばれる
-- [ ] **Green**: EditBookModal を実装
-- [ ] **Refactor**: コンポーネントのリファクタリング
+- [x] **Green**: EditBookModal を実装
+- [x] **Refactor**: コンポーネントのリファクタリング
 
 ---
 
@@ -107,22 +107,22 @@
 
 ### 4.1 BookDetailModal の更新
 
-- [ ] **Red**: BookDetailModal のテストを更新
+- [x] **Red**: BookDetailModal のテストを更新
   - 「編集」ボタンをクリックすると EditBookModal が表示される
   - 「削除」ボタンをクリックすると DeleteConfirmDialog が表示される
-- [ ] **Green**: BookDetailModal を更新
-- [ ] **Refactor**: コンポーネントのリファクタリング
+- [x] **Green**: BookDetailModal を更新
+- [x] **Refactor**: コンポーネントのリファクタリング
 
 ---
 
 ## 完了条件
 
-- [ ] すべてのテストがパスしている
-- [ ] ESLint/Prettier のエラーがない
-- [ ] TypeScript の型エラーがない
-- [ ] 設計書通りの動作が確認できる
-- [ ] 削除時に確認ダイアログが表示される
-- [ ] 編集モーダルで全項目が編集できる
+- [x] すべてのテストがパスしている
+- [x] ESLint/Prettier のエラーがない
+- [x] TypeScript の型エラーがない
+- [x] 設計書通りの動作が確認できる
+- [x] 削除時に確認ダイアログが表示される
+- [x] 編集モーダルで全項目が編集できる
 
 ---
 
