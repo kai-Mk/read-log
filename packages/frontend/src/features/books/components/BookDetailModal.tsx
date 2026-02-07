@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import type { Book, BookStatus } from '@read-log/shared';
 import { Modal } from '../../../components/Modal';
 import { StatusDropdown } from './StatusDropdown';
+import { EditBookModal } from './EditBookModal';
+import { DeleteConfirmDialog } from './DeleteConfirmDialog';
 import { useUpdateBook } from '../hooks/useUpdateBook';
+import { useDeleteBook } from '../hooks/useDeleteBook';
 
 type BookDetailModalProps = {
   isOpen: boolean;
@@ -27,7 +30,10 @@ export function BookDetailModal({
   libraryId,
 }: BookDetailModalProps) {
   const { updateBook, isLoading } = useUpdateBook(libraryId);
+  const { deleteBook, isLoading: isDeleting } = useDeleteBook(libraryId);
   const [currentStatus, setCurrentStatus] = useState<BookStatus>(book.status);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
   // bookが変更されたらローカルステートを同期
   useEffect(() => {
@@ -56,6 +62,19 @@ export function BookDetailModal({
       // 失敗時は元に戻す
       setCurrentStatus(book.status);
     }
+  };
+
+  const handleDelete = async () => {
+    const success = await deleteBook(book.id);
+    if (success) {
+      onSuccess();
+      onClose();
+    }
+  };
+
+  const handleEditSuccess = () => {
+    setIsEditModalOpen(false);
+    onSuccess();
   };
 
   return (
@@ -97,7 +116,19 @@ export function BookDetailModal({
           </div>
         </div>
       </div>
-      <div className="mt-6 flex justify-end">
+      <div className="mt-6 flex justify-end gap-3">
+        <button
+          onClick={() => setIsDeleteDialogOpen(true)}
+          className="rounded-md bg-red-100 px-4 py-2 text-red-700 hover:bg-red-200"
+        >
+          削除
+        </button>
+        <button
+          onClick={() => setIsEditModalOpen(true)}
+          className="rounded-md bg-blue-100 px-4 py-2 text-blue-700 hover:bg-blue-200"
+        >
+          編集
+        </button>
         <button
           onClick={onClose}
           className="rounded-md bg-gray-100 px-4 py-2 text-gray-700 hover:bg-gray-200"
@@ -105,6 +136,22 @@ export function BookDetailModal({
           閉じる
         </button>
       </div>
+
+      <EditBookModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        onSuccess={handleEditSuccess}
+        book={book}
+        libraryId={libraryId}
+      />
+
+      <DeleteConfirmDialog
+        isOpen={isDeleteDialogOpen}
+        onCancel={() => setIsDeleteDialogOpen(false)}
+        onConfirm={handleDelete}
+        bookTitle={book.title}
+        isLoading={isDeleting}
+      />
     </Modal>
   );
 }
