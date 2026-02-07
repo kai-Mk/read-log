@@ -10,6 +10,7 @@ vi.mock('../repositories/bookRepository', () => ({
     findById: vi.fn(),
     findByLibraryId: vi.fn(),
     update: vi.fn(),
+    softDelete: vi.fn(),
   },
 }));
 
@@ -229,6 +230,65 @@ describe('bookService', () => {
         '本が見つかりません'
       );
       expect(bookRepository.update).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('deleteBook', () => {
+    it('本を削除できる', async () => {
+      vi.mocked(libraryRepository.findById).mockResolvedValue(mockLibrary);
+      vi.mocked(bookRepository.findById).mockResolvedValue(mockBook);
+      vi.mocked(bookRepository.softDelete).mockResolvedValue({
+        ...mockBook,
+        deletedAt: new Date(),
+      });
+
+      await bookService.deleteBook('library-uuid', 'book-uuid');
+
+      expect(libraryRepository.findById).toHaveBeenCalledWith('library-uuid');
+      expect(bookRepository.findById).toHaveBeenCalledWith('book-uuid');
+      expect(bookRepository.softDelete).toHaveBeenCalledWith('book-uuid');
+    });
+
+    it('ライブラリが存在しない場合はNotFoundErrorを投げる', async () => {
+      vi.mocked(libraryRepository.findById).mockResolvedValue(null);
+
+      await expect(bookService.deleteBook('non-existent', 'book-uuid')).rejects.toThrow(
+        NotFoundError
+      );
+      await expect(bookService.deleteBook('non-existent', 'book-uuid')).rejects.toThrow(
+        'マイ書庫が見つかりません'
+      );
+      expect(bookRepository.softDelete).not.toHaveBeenCalled();
+    });
+
+    it('本が存在しない場合はNotFoundErrorを投げる', async () => {
+      vi.mocked(libraryRepository.findById).mockResolvedValue(mockLibrary);
+      vi.mocked(bookRepository.findById).mockResolvedValue(null);
+
+      await expect(bookService.deleteBook('library-uuid', 'non-existent')).rejects.toThrow(
+        NotFoundError
+      );
+      await expect(bookService.deleteBook('library-uuid', 'non-existent')).rejects.toThrow(
+        '本が見つかりません'
+      );
+      expect(bookRepository.softDelete).not.toHaveBeenCalled();
+    });
+
+    it('他のライブラリの本は削除できない', async () => {
+      const otherLibraryBook = {
+        ...mockBook,
+        libraryId: 'other-library-uuid',
+      };
+      vi.mocked(libraryRepository.findById).mockResolvedValue(mockLibrary);
+      vi.mocked(bookRepository.findById).mockResolvedValue(otherLibraryBook);
+
+      await expect(bookService.deleteBook('library-uuid', 'book-uuid')).rejects.toThrow(
+        NotFoundError
+      );
+      await expect(bookService.deleteBook('library-uuid', 'book-uuid')).rejects.toThrow(
+        '本が見つかりません'
+      );
+      expect(bookRepository.softDelete).not.toHaveBeenCalled();
     });
   });
 });
