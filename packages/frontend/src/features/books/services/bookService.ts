@@ -69,4 +69,15 @@ export const bookService = {
 
     return response.json();
   },
+
+  async deleteBook(libraryId: string, bookId: string): Promise<void> {
+    const response = await fetch(`/api/libraries/${libraryId}/books/${bookId}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      const info = await response.json().catch(() => null);
+      throw new FetchError('本の削除に失敗しました', response.status, info);
+    }
+  },
 };

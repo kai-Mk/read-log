@@ -180,4 +180,31 @@ describe('bookService', () => {
       );
     });
   });
+
+  describe('deleteBook', () => {
+    it('DELETE /api/libraries/:libraryId/books/:bookId を呼び出す', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({ success: true }),
+      });
+
+      await bookService.deleteBook('library-uuid', 'book-uuid');
+
+      expect(fetch).toHaveBeenCalledWith('/api/libraries/library-uuid/books/book-uuid', {
+        method: 'DELETE',
+      });
+    });
+
+    it('エラー時にFetchErrorを投げる', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: false,
+        status: 404,
+        json: () => Promise.resolve({ message: 'Not found' }),
+      });
+
+      await expect(bookService.deleteBook('library-uuid', 'non-existent')).rejects.toThrow(
+        FetchError
+      );
+    });
+  });
 });

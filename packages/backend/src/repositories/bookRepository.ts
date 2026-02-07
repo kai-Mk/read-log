@@ -79,4 +79,11 @@ export const bookRepository = {
       },
     });
   },
+
+  async softDelete(id: string) {
+    return prisma.book.update({
+      where: { id, deletedAt: null },
+      data: { deletedAt: new Date() },
+    });
+  },
 };

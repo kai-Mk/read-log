@@ -47,4 +47,20 @@ export const bookService = {
 
     return bookRepository.update(bookId, input);
   },
+
+  async deleteBook(libraryId: string, bookId: string) {
+    // ライブラリの存在確認
+    const library = await libraryRepository.findById(libraryId);
+    if (!library) {
+      throw new NotFoundError('マイ書庫が見つかりません');
+    }
+
+    // 本の存在確認とライブラリIDの整合性チェック
+    const book = await bookRepository.findById(bookId);
+    if (!book || book.libraryId !== libraryId) {
+      throw new NotFoundError('本が見つかりません');
+    }
+
+    await bookRepository.softDelete(bookId);
+  },
 };

@@ -31,3 +31,5 @@ booksRoutes.put(
   validateBody(updateBookSchema),
   bookController.update
 );
+
+booksRoutes.delete('/:bookId', validateParams(bookIdParamSchema), bookController.delete);

@@ -13,6 +13,21 @@ vi.mock('../utils/prisma', () => ({
   },
 }));
 
+const mockBook = {
+  id: 'book-uuid',
+  libraryId: 'library-uuid',
+  title: 'リーダブルコード',
+  author: 'Dustin Boswell',
+  isbn: '9784873115658',
+  coverImage: 'https://example.com/cover.jpg',
+  pageCount: 237,
+  status: 'unread',
+  category: 'tech',
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  deletedAt: null,
+};
+
 describe('bookRepository', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -264,6 +279,33 @@ describe('bookRepository', () => {
         },
       });
       expect(result).toEqual(updatedBook);
+    });
+  });
+
+  describe('softDelete', () => {
+    it('本を削除するとdeletedAtが設定される', async () => {
+      const deletedBook = {
+        ...mockBook,
+        deletedAt: new Date(),
+      };
+
+      vi.mocked(prisma.book.update).mockResolvedValue(deletedBook);
+
+      await bookRepository.softDelete('book-uuid');
+
+      expect(prisma.book.update).toHaveBeenCalledWith({
+        where: { id: 'book-uuid', deletedAt: null },
+        data: { deletedAt: expect.any(Date) },
+      });
+    });
+
+    it('存在しない本を削除するとエラーが発生する', async () => {
+      const prismaError = new Error('Record to update not found');
+      vi.mocked(prisma.book.update).mockRejectedValue(prismaError);
+
+      await expect(bookRepository.softDelete('non-existent')).rejects.toThrow(
+        'Record to update not found'
+      );
     });
   });
 });

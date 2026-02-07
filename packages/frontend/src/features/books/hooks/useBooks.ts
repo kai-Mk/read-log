@@ -6,7 +6,7 @@ export type UseBooksResult = {
   data: Book[] | undefined;
   isLoading: boolean;
   error: Error | undefined;
-  mutate: () => void;
+  mutate: () => Promise<Book[] | undefined>;
 };
 
 export function useBooks(libraryId: string | undefined, filter?: GetBooksFilter): UseBooksResult {

@@ -8,6 +8,7 @@ import { bookService } from '../services/bookService';
 vi.mock('../services/bookService', () => ({
   bookService: {
     updateBook: vi.fn(),
+    deleteBook: vi.fn(),
   },
 }));
 
@@ -108,7 +109,7 @@ describe('BookDetailModal', () => {
     });
   });
 
-  it('閉じるボタンをクリックするとonCloseが呼ばれる', () => {
+  it('ヘッダーの閉じるボタンをクリックするとonCloseが呼ばれる', () => {
     const onClose = vi.fn();
 
     render(
@@ -122,12 +123,9 @@ describe('BookDetailModal', () => {
       { wrapper }
     );
 
-    // フッターの閉じるボタンをクリック（テキストが「閉じる」のボタン）
-    const closeButtons = screen.getAllByRole('button', { name: '閉じる' });
-    const footerCloseButton = closeButtons.find((btn) => btn.textContent === '閉じる');
-    if (footerCloseButton) {
-      fireEvent.click(footerCloseButton);
-    }
+    // ヘッダーの閉じるボタン（Xアイコン）をクリック
+    const closeButton = screen.getByRole('button', { name: '閉じる' });
+    fireEvent.click(closeButton);
 
     expect(onClose).toHaveBeenCalled();
   });
@@ -162,5 +160,74 @@ describe('BookDetailModal', () => {
     );
 
     expect(screen.getByTestId('cover-placeholder')).toBeInTheDocument();
+  });
+
+  it('「編集」ボタンをクリックすると編集モーダルが表示される', async () => {
+    render(
+      <BookDetailModal
+        isOpen={true}
+        onClose={vi.fn()}
+        onSuccess={vi.fn()}
+        book={mockBook}
+        libraryId="library-uuid"
+      />,
+      { wrapper }
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: '編集' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('本の編集')).toBeInTheDocument();
+    });
+  });
+
+  it('「削除」ボタンをクリックすると確認ダイアログが表示される', async () => {
+    render(
+      <BookDetailModal
+        isOpen={true}
+        onClose={vi.fn()}
+        onSuccess={vi.fn()}
+        book={mockBook}
+        libraryId="library-uuid"
+      />,
+      { wrapper }
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: '削除' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('本の削除')).toBeInTheDocument();
+      expect(screen.getByText(/「リーダブルコード」を削除しますか？/)).toBeInTheDocument();
+    });
+  });
+
+  it('削除確認で「削除する」をクリックするとonDeleteが呼ばれモーダルが閉じる', async () => {
+    vi.mocked(bookService.deleteBook).mockResolvedValue(undefined);
+    const onClose = vi.fn();
+    const onSuccess = vi.fn();
+
+    render(
+      <BookDetailModal
+        isOpen={true}
+        onClose={onClose}
+        onSuccess={onSuccess}
+        book={mockBook}
+        libraryId="library-uuid"
+      />,
+      { wrapper }
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: '削除' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('本の削除')).toBeInTheDocument();
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: '削除する' }));
+
+    await waitFor(() => {
+      expect(bookService.deleteBook).toHaveBeenCalledWith('library-uuid', 'book-uuid');
+      expect(onClose).toHaveBeenCalled();
+    });
   });
 });

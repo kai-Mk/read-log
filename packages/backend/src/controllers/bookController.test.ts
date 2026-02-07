@@ -12,6 +12,7 @@ vi.mock('../services/bookService', () => ({
     createBook: vi.fn(),
     getBooks: vi.fn(),
     updateBook: vi.fn(),
+    deleteBook: vi.fn(),
   },
 }));
 
@@ -55,6 +56,11 @@ describe('bookController', () => {
       validateParams(bookIdSchema),
       validateBody(updateBookSchema),
       bookController.update
+    );
+    app.delete(
+      '/api/libraries/:libraryId/books/:bookId',
+      validateParams(bookIdSchema),
+      bookController.delete
     );
   });
 
@@ -243,6 +249,38 @@ describe('bookController', () => {
             category: 'tech',
           }),
         }
+      );
+
+      expect(res.status).toBe(404);
+      const body = (await res.json()) as { code: string };
+      expect(body.code).toBe('NOT_FOUND');
+    });
+  });
+
+  describe('DELETE /api/libraries/:libraryId/books/:bookId', () => {
+    it('200を返し、success: trueが返る', async () => {
+      vi.mocked(bookService.deleteBook).mockResolvedValue(undefined);
+
+      const res = await app.request(
+        '/api/libraries/550e8400-e29b-41d4-a716-446655440000/books/550e8400-e29b-41d4-a716-446655440001',
+        { method: 'DELETE' }
+      );
+
+      expect(res.status).toBe(200);
+      const body = (await res.json()) as { success: boolean };
+      expect(body.success).toBe(true);
+      expect(bookService.deleteBook).toHaveBeenCalledWith(
+        '550e8400-e29b-41d4-a716-446655440000',
+        '550e8400-e29b-41d4-a716-446655440001'
+      );
+    });
+
+    it('本が存在しない場合は404を返す', async () => {
+      vi.mocked(bookService.deleteBook).mockRejectedValue(new NotFoundError('本が見つかりません'));
+
+      const res = await app.request(
+        '/api/libraries/550e8400-e29b-41d4-a716-446655440000/books/550e8400-e29b-41d4-a716-446655440001',
+        { method: 'DELETE' }
       );
 
       expect(res.status).toBe(404);

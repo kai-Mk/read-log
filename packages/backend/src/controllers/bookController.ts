@@ -40,4 +40,13 @@ export const bookController = {
     const book = await bookService.updateBook(libraryId, bookId, body);
     return c.json(book);
   },
+
+  async delete(c: Context) {
+    const { libraryId, bookId } = c.get('validatedParams') as {
+      libraryId: string;
+      bookId: string;
+    };
+    await bookService.deleteBook(libraryId, bookId);
+    return c.json({ success: true });
+  },
 };
