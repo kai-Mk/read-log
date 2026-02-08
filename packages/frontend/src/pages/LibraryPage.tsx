@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import type { Book } from '@read-log/shared';
 import { Loading } from '../components/Loading';
 import { useLibrary } from '../features/library/hooks/useLibrary';
 import { useBooks } from '../features/books/hooks/useBooks';
-import { BookList } from '../features/books/components/BookList';
+import { ViewTabs, type ViewType } from '../features/books/components/ViewTabs';
+import { AllBooksView } from '../features/books/components/AllBooksView';
+import { UnreadView } from '../features/books/components/UnreadView';
+import { WishlistView } from '../features/books/components/WishlistView';
+import { CompletedView } from '../features/books/components/CompletedView';
 import { AddBookModal } from '../features/books/components/AddBookModal';
 import { BookDetailModal } from '../features/books/components/BookDetailModal';
 
@@ -14,6 +18,21 @@ export function LibraryPage() {
   const { data: books, isLoading: isBooksLoading, error: booksError, mutate } = useBooks(libraryId);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [activeView, setActiveView] = useState<ViewType>('all');
+
+  const filteredBooks = useMemo(() => {
+    const allBooks = books ?? [];
+    switch (activeView) {
+      case 'unread':
+        return allBooks.filter((book) => book.status === 'unread');
+      case 'wishlist':
+        return allBooks.filter((book) => book.status === 'wishlist');
+      case 'completed':
+        return allBooks.filter((book) => book.status === 'completed');
+      default:
+        return allBooks;
+    }
+  }, [books, activeView]);
 
   if (isLibraryLoading) {
     return (
@@ -63,6 +82,31 @@ export function LibraryPage() {
     }
   };
 
+  const renderView = () => {
+    if (isBooksLoading) {
+      return <Loading message="本を読み込み中..." />;
+    }
+
+    if (booksError) {
+      return (
+        <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-600">
+          {booksError.message}
+        </div>
+      );
+    }
+
+    switch (activeView) {
+      case 'unread':
+        return <UnreadView books={filteredBooks} onBookClick={handleBookClick} />;
+      case 'wishlist':
+        return <WishlistView books={filteredBooks} onBookClick={handleBookClick} />;
+      case 'completed':
+        return <CompletedView books={filteredBooks} onBookClick={handleBookClick} />;
+      default:
+        return <AllBooksView books={filteredBooks} onBookClick={handleBookClick} />;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <main className="container mx-auto px-4 py-8">
@@ -76,12 +120,9 @@ export function LibraryPage() {
           </button>
         </div>
 
-        <BookList
-          books={books ?? []}
-          isLoading={isBooksLoading}
-          error={booksError}
-          onBookClick={handleBookClick}
-        />
+        <ViewTabs activeView={activeView} onChange={setActiveView} />
+
+        {renderView()}
 
         <AddBookModal
           isOpen={isAddModalOpen}
